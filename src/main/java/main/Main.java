@@ -7,6 +7,7 @@ import ausruestung.*;
 import kaempfer.*;
 import soeldner.*;
 
+//Robin hier alles AGAGAGAG
 
 public class Main {
 
