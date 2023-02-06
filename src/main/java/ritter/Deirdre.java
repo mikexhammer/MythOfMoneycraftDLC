@@ -16,7 +16,7 @@ public class Deirdre extends Kaempfend {
 
     @Override
     public String toString() {
-        return "Deirdre";
+        return "Deirdre: "  + this.gesundheit;
     }
 
     @Override

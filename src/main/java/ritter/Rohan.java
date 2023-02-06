@@ -23,7 +23,7 @@ public class Rohan extends Kaempfend {
 
     @Override
     public String toString() {
-        return "Rohan";
+        return "Rohan: " + this.gesundheit;
     }
 
     @Override

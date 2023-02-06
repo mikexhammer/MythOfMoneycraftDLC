@@ -53,7 +53,7 @@ public class Ivan extends Kaempfend{
 
     @Override
     public String toString() {
-        return "Ivan";
+        return "Ivan: " + this.gesundheit;
     }
 
     public Waffe getWaffe() {

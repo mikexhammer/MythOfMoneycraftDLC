@@ -23,7 +23,7 @@ public class Maeve extends Kaempfend{
     }
 
     public int kaempfen() {
-        System.out.println(ConsoleColors.WHITE_BOLD + "Schwarzer Ritter schlaegt zu!" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.WHITE_BOLD + "Maeve schlaegt zu!" + ConsoleColors.RESET);
         //Geschick ist 5, also gerne multiplizieren mit 0 bis 5
         //Minimaler Schlag = 0
         //Maximaler Schlag = 25

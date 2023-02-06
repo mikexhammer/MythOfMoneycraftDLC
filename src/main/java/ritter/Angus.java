@@ -56,7 +56,7 @@ public class Angus extends Kaempfend{
 
     @Override
     public String toString() {
-        return "Angus";
+        return "Angus: "  + this.gesundheit;
     }
 
     public Waffe getWaffe() {
