@@ -1,21 +1,21 @@
-package soeldner;
+package ritter;
 
-import ausruestung.Ruestung;
-import ausruestung.Waffe;
-import kaempfer.Kaempfend;
+import ware.Ruestung;
+import ware.Trank;
+import ware.Waffe;
+import figuren.Kaempfend;
 import main.ConsoleColors;
 //import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
-public class Conan extends Kaempfend {
+public class Rohan extends Kaempfend {
 
     private List<Waffe> waffen;
     private Ruestung ruestung;
 
-    public Conan(int gesundheit, int geschick, int sold) {
+    public Rohan(int gesundheit, int geschick, int sold) {
         super(gesundheit, geschick, sold);
         this.waffen = new ArrayList<>(2);
 
@@ -23,7 +23,7 @@ public class Conan extends Kaempfend {
 
     @Override
     public String toString() {
-        return "Conan (Sold:" + sold + ")";
+        return "Rohan";
     }
 
     @Override
@@ -34,14 +34,14 @@ public class Conan extends Kaempfend {
             for (Waffe w : waffen) {
                 schadenswert += w.zuhauen(geschick);
                 if(hand % 2 == 0) {
-                    System.out.println("Conan haut mit links!");
+                    System.out.println("Rohan haut mit links!");
                 } else {
-                    System.out.println("Conan haut mit rechts!");
+                    System.out.println("Rohan haut mit rechts!");
                 }
                 hand++;
             }
         } else {
-            System.out.println(ConsoleColors.YELLOW + "Conan haut mit Faeusten!" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.YELLOW + "Rohan haut mit Faeusten!" + ConsoleColors.RESET);
             schadenswert = geschick;
         }
         return schadenswert;
@@ -67,6 +67,14 @@ public class Conan extends Kaempfend {
         this.ruestung = r;
     }
 
+    public void nimmTrank(Trank t) {
+        this.setGesundheit(this.gesundheit + t.getAufbau());
+        if (this.gesundheit == 100) {
+            System.out.println("Rohan ist vollstaendig geheilt!");
+        } else {
+            System.out.println("Rohan auf " + this.gesundheit + " geheilt.");
+        }
+    }
     public List<Waffe> getWaffen() {
         return waffen;
     }

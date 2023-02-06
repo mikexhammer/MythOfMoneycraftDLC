@@ -1,14 +1,17 @@
-package soeldner;
+package ritter;
 
-import ausruestung.Ruestung;
-import ausruestung.Waffe;
-import kaempfer.Kaempfend;
+import ware.Ruestung;
+import ware.Trank;
+import ware.Waffe;
+import figuren.Kaempfend;
 
-public class Blobb extends Kaempfend{
+import javax.xml.transform.stream.StreamSource;
+
+public class Angus extends Kaempfend{
 
     private Waffe waffe;
 
-    public Blobb(int gesundheit, int geschick, int sold) {
+    public Angus(int gesundheit, int geschick, int sold) {
         super(gesundheit, geschick, sold);
     }
 
@@ -17,9 +20,9 @@ public class Blobb extends Kaempfend{
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Blobb haut zu!");
+            System.out.println("Angus haut zu!");
         } else {
-            System.out.println("Blobb haut mit Faeusten!");
+            System.out.println("Angus haut mit Faeusten!");
             schadenswert = geschick;
         }
         return schadenswert;
@@ -37,13 +40,23 @@ public class Blobb extends Kaempfend{
 
     @Override
     public void nimmRuestung(Ruestung r) {
-        System.out.println("Blobb kann keine Ruestung tragen!");
+        System.out.println("Angus kann keine Ruestung tragen!");
         System.out.println("Das Geld verlierst Du trotzdem.");
     }
 
     @Override
+    public void nimmTrank(Trank t) {
+        this.setGesundheit(this.gesundheit + t.getAufbau());
+        if (this.gesundheit == 100) {
+            System.out.println("Angus ist vollstaendig geheilt!");
+        } else {
+            System.out.println("Angus auf " + this.gesundheit + " geheilt.");
+        }
+    }
+
+    @Override
     public String toString() {
-        return "Blobb (Sold:" + sold + ")";
+        return "Angus";
     }
 
     public Waffe getWaffe() {

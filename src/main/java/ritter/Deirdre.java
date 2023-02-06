@@ -1,21 +1,22 @@
-package soeldner;
+package ritter;
 
-import ausruestung.Ruestung;
-import ausruestung.Waffe;
-import kaempfer.Kaempfend;
+import ware.Ruestung;
+import ware.Trank;
+import ware.Waffe;
+import figuren.Kaempfend;
 
-public class Xenia extends Kaempfend {
+public class Deirdre extends Kaempfend {
 
     private Waffe waffe;
     private Ruestung ruestung;
 
-    public Xenia(int gesundheit, int geschick, int sold) {
+    public Deirdre(int gesundheit, int geschick, int sold) {
         super(gesundheit, geschick, sold);
     }
 
     @Override
     public String toString() {
-        return "Xenia (Sold:" + sold + ")";
+        return "Deirdre";
     }
 
     @Override
@@ -23,9 +24,9 @@ public class Xenia extends Kaempfend {
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Xenia haut zu!");
+            System.out.println("Deirdre haut zu!");
         } else {
-            System.out.println("Xenia haut mit Faeusten!");
+            System.out.println("Deirdre haut mit Faeusten!");
             schadenswert = geschick;
         }
         return schadenswert;
@@ -48,6 +49,16 @@ public class Xenia extends Kaempfend {
     @Override
     public void nimmRuestung(Ruestung r) {
         this.ruestung = r;
+    }
+
+    @Override
+    public void nimmTrank(Trank t) {
+        this.setGesundheit(this.gesundheit + t.getAufbau());
+        if (this.gesundheit == 100) {
+            System.out.println("Deirdre ist vollstaendig geheilt!");
+        } else {
+            System.out.println("Deirdre auf " + this.gesundheit + " geheilt.");
+        }
     }
 
     public Waffe getWaffe() {

@@ -1,4 +1,4 @@
-package ausruestung;
+package ware;
 
 public class Ruestung extends Ausruestung{
 

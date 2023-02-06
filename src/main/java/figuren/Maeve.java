@@ -1,20 +1,21 @@
-package kaempfer;
+package figuren;
 
 import java.util.Random;
 import main.ConsoleColors;
 
-import ausruestung.Ruestung;
-import ausruestung.Waffe;
+import ware.Ruestung;
+import ware.Trank;
+import ware.Waffe;
 
-public class SchwarzerRitter extends Kaempfend{
+public class Maeve extends Kaempfend{
 
-    public SchwarzerRitter() {
+    public Maeve() {
         this.gesundheit = 100;
         this.geschick = 5;
         this.sold = 200;
     }
 
-    public SchwarzerRitter(int gesundheit, int geschick, int sold) {
+    public Maeve(int gesundheit, int geschick, int sold) {
         super(gesundheit, geschick, sold);
         this.gesundheit = gesundheit;
         this.geschick = geschick;
@@ -46,12 +47,16 @@ public class SchwarzerRitter extends Kaempfend{
 
     @Override
     public void nimmWaffe(Waffe w) {
-        System.out.println("Schwarzer Ritter braucht keine Waffen");
+        System.out.println("Maeve braucht keine Waffen");
     }
 
     @Override
     public void nimmRuestung(Ruestung r) {
-        System.out.println("Schwarzer Ritter braucht keine Ruestung");
+        System.out.println("Maeve traegt keine Ruestung");
     }
 
+    @Override
+    public void nimmTrank(Trank t) {
+        System.out.println("Maeve trinkt keine Traenke");
+    }
 }

@@ -1,7 +1,8 @@
-package kaempfer;
+package figuren;
 
-import ausruestung.Ruestung;
-import ausruestung.Waffe;
+import ware.Ruestung;
+import ware.Trank;
+import ware.Waffe;
 
 public abstract class Kaempfend {
     protected int gesundheit, geschick, sold;
@@ -19,7 +20,11 @@ public abstract class Kaempfend {
         return gesundheit;
     }
     public void setGesundheit(int gesundheit) {
+        if (gesundheit > 100) {
+            this.gesundheit = 100;
+        } else {
         this.gesundheit = gesundheit;
+        }
     }
     public int getGeschick() {
         return geschick;
@@ -47,6 +52,7 @@ public abstract class Kaempfend {
     public abstract void nimmWaffe(Waffe w);
     public abstract void nimmRuestung(Ruestung r);
 
+    public abstract void nimmTrank(Trank t);
 
 
 

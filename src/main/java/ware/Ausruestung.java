@@ -1,4 +1,4 @@
-package ausruestung;
+package ware;
 
 public class Ausruestung {
     protected String name;
