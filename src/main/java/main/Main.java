@@ -11,6 +11,8 @@ import ritter.*;
 
 public class Main {
 
+     //Robin ist hier
+
     Locale defaultLocale = Locale.GERMAN;
     private List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
     private Kaempfend maeven;
