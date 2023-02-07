@@ -44,7 +44,7 @@ public class Main {
 
     public void hauptmenu() {
 
-        System.out.println("Aktuell: " + Locale.getDefault());
+        System.out.println(Messages.getString("Main.60") + Locale.getDefault());
         System.out.println("              />\n" +
                            " (           //--------╔╦╗┬ ┬┌─┐┌┬┐┬┌─┐--╦╔═┌┐┌┬┌─┐┬ ┬┌┬┐┌─┐------------------(\n" +
                            "(*)OXOXOXOXO(*>========║║║└┬┘└─┐ │ ││  ==╠╩╗│││││ ┬├─┤ │ └─┐================== \\ \n" +
@@ -52,9 +52,11 @@ public class Main {
                            "              \\>\n");
 
         int eingabe = -1;
+
         while (eingabe != 0) {
             System.out.println(Messages.getString("Main.54") +
                                Messages.getString("Main.55") +
+                               Messages.getString("Main.62") +
                                Messages.getString("Main.56"));
 
             eingabe = Eingabe.leseInt();
@@ -67,31 +69,52 @@ public class Main {
                 }
 
                 if (auswahl == 0) {
-                    System.out.println("Setze auf englisch");
-                    System.out.println("Aktuell: " + Locale.getDefault());
-                    Locale.setDefault(new Locale("de", "DE"));
-                    System.out.println("Neu: " + Locale.getDefault());
-                    ResourceBundle.clearCache();
+                    System.out.println("Setze auf Deutsch");
+                    System.out.println(Messages.getString("Main.60") + Locale.getDefault());
+                    Messages.changeLocation(new Locale("de", "DE"));
+                    System.out.println(Messages.getString("Main.61") + Locale.getDefault());
                     new Main().hauptmenu();
                 }
 
                 if (auswahl == 1) {
-                    System.out.println("Setze auf englisch");
-                    System.out.println("Aktuell: " + Locale.getDefault());
-                    Locale.setDefault(new Locale("en", "EN"));
-                    System.out.println("Neu: " + Locale.getDefault());
-                    ResourceBundle.clearCache();
+                    System.out.println("Setze auf Englisch");
+                    System.out.println(Messages.getString("Main.60") + Locale.getDefault());
+                    Messages.changeLocation(new Locale("en", "EN"));
+                    System.out.println(Messages.getString("Main.61") + Locale.getDefault());
                     new Main().hauptmenu();
+                }
+
+            }
+
+            if (eingabe == 2) {
+
+                System.out.println("          A             | Willkommen in Mystic Knights – Die Legende von Tir Na Nog\n" +
+                                   "         /!\\            | Mystic Knights – Die Legende von Tir Na Nog ist eine US-amerikanisch-irische Fantasy-Fernsehserie.\n" +
+                                   "        / ! \\           | Sie wurde 1998 von Saban Entertainment produziert.\n" +
+                                   " /\\     )___(           | Die Handlung der Serie basiert teilweise auf der irischen Mythologie.\n" +
+                                   "(  `.____(_)_________   |\\n\n" +
+                                   "|           __..--\"\"    | Hier spielst Du ein Textbasiertes Fan-Rougegame!\n" +
+                                   "(       _.-|            | Deine Aufgabe ist es so viele Level wie möglich zu schaffen.\n" +
+                                   " \\    ,' | |            | Verlierst Du den Kampf faengt das Spiel von neuem an.\n" +
+                                   "  \\  /   | |            | Du hast jede Runde die Moeglichkeit neue Ritter anzuwerben oder vorhandene aufzuruesten.\n" +
+                                   "   \\(    | |            |\n" +
+                                   "    `    | |            | Die Steuerung erfolgt lediglich ueber eine Zahleneingabe. \n" +
+                                   "         | |            | Liegt die Zahl ueber dem angegebenen Wert, wartet das Spiel auf eine korrektur.\n");
+                System.out.println("(1)" + Messages.getString("Main.38"));
+                int auswahl = Eingabe.leseInt();
+                if(auswahl == 1) {
+                    hauptmenu();
                 }
             }
 
-            if(eingabe == 2) {
+            if (eingabe == 3) {
                 return;
             }
         }
 
         this.starten();
     }
+
     public void starten() {
         maeven = new Maeve();
         int eingabe = -1;
