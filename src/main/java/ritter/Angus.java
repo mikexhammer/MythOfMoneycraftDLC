@@ -10,6 +10,8 @@ import javax.xml.transform.stream.StreamSource;
 public class Angus extends Kaempfend{
 
     private Waffe waffe;
+    private Ruestung ruestung;
+
 
     public Angus(int gesundheit, int geschick, int sold) {
         super(gesundheit, geschick, sold);
@@ -40,8 +42,7 @@ public class Angus extends Kaempfend{
 
     @Override
     public void nimmRuestung(Ruestung r) {
-        System.out.println("Angus kann keine Ruestung tragen!");
-        System.out.println("Das Geld verlierst Du trotzdem.");
+        this.ruestung = r;
     }
 
     @Override

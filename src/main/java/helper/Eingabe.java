@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 public class Eingabe {
 
     public static String leseString(){
+        AusgabeTon.waehlen();
         String ergebnis;
 
         BufferedReader in = new BufferedReader( new InputStreamReader(System.in));

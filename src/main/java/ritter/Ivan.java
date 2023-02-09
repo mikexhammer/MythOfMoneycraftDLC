@@ -8,6 +8,8 @@ import ware.Waffe;
 public class Ivan extends Kaempfend{
 
     private Waffe waffe;
+    private Ruestung ruestung;
+
 
     public Ivan(int gesundheit, int geschick, int sold) {
         super(gesundheit, geschick, sold);
@@ -38,8 +40,7 @@ public class Ivan extends Kaempfend{
 
     @Override
     public void nimmRuestung(Ruestung r) {
-        System.out.println("Ivan kann keine Ruestung tragen!");
-        System.out.println("Das Geld verlierst Du trotzdem.");
+this.ruestung = r;
     }
 
     public void nimmTrank(Trank t) {

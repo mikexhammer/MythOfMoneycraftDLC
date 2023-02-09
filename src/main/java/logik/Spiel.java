@@ -1,11 +1,8 @@
 package logik;
 
-import helper.ConsoleColors;
+import helper.*;
 import figuren.Kaempfend;
 import figuren.Maeve;
-import helper.Ausgabe;
-import helper.Eingabe;
-import helper.Messages;
 import ritter.Angus;
 import ritter.Deirdre;
 import ritter.Ivan;
@@ -17,6 +14,7 @@ import ware.Waffe;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class Spiel {
 
@@ -24,7 +22,7 @@ public class Spiel {
     Locale defaultLocale = Locale.GERMAN;
     private List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
     private Kaempfend maeven;
-    private int gold = 160;
+    private int gold = 600;
     private int lvl = 1;
 
     public List<Kaempfend> getKaempfende() {
@@ -67,6 +65,7 @@ public class Spiel {
     };
 
     public void start() {
+        //AusgabeTon.melodie();
         Ausgabe.aktuelleSprache();
         Ausgabe.startMenu();
 
@@ -314,7 +313,7 @@ public class Spiel {
         }
     }
 
-    private void kaempfen() {
+    private void kaempfen(){
 
         while (!this.kaempfende.isEmpty()) {
             for (Kaempfend k : kaempfende) {
@@ -328,6 +327,7 @@ public class Spiel {
                 if (maeven.getGesundheit() <= 0) {
                     //Level geschafft
                     Ausgabe.maevenBesiegt(this.lvl);
+                    AusgabeTon.besiegt();
                     this.gold += 500;
                     this.lvl++;
                     this.mainMenu();
@@ -335,14 +335,22 @@ public class Spiel {
 
                 if (k.getGesundheit() <= 0) {
                     //Kaempfer besiegt
+                    AusgabeTon.gefallen();
                     System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
                     kaempfende.remove(k);
                     break;
+                }
+
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }
         //Spiel verloren, faengt bei Level 1 mit 600 Gold an
         Ausgabe.kampfVerloren();
+        AusgabeTon.verloren();
         this.gold = 600;
         this.lvl = 1;
         this.mainMenu();
