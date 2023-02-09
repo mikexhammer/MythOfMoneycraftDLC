@@ -73,51 +73,38 @@ public class Spiel {
         int eingabe = -1;
 
         while (eingabe != 0) {
-            //Ausgabe.startMenu()
             Ausgabe.auswahlStartMenu();
 
             eingabe = Eingabe.leseInt();
 
             if (eingabe == 1) {
-                System.out.println(Messages.getString("Main.59"));
+                Ausgabe.auswahlSprache();
                 int auswahl = this.auswahl(this.sprache);
                 if (auswahl == this.sprache.length) {
                     start();
                 }
 
                 if (auswahl == 0) {
-                    System.out.println("Setze auf Deutsch");
-                    System.out.println(Messages.getString("Main.60") + Locale.getDefault());
+                    Ausgabe.setzeDeutsch();
+                    Ausgabe.aktuelleSprache();
                     Messages.changeLocation(new Locale("de", "DE"));
-                    System.out.println(Messages.getString("Main.61") + Locale.getDefault());
+                    Ausgabe.neueSprache();
                     start();
                 }
 
                 if (auswahl == 1) {
-                    System.out.println("Setze auf Englisch");
-                    System.out.println(Messages.getString("Main.60") + Locale.getDefault());
+                    Ausgabe.setzeEnglisch();
+                    Ausgabe.aktuelleSprache();
                     Messages.changeLocation(new Locale("en", "EN"));
-                    System.out.println(Messages.getString("Main.61") + Locale.getDefault());
+                    Ausgabe.neueSprache();
                     start();
                 }
 
             }
 
             if (eingabe == 2) {
-
-                System.out.println("          A             | Willkommen in Mystic Knights – Die Legende von Tir Na Nog\n" +
-                                   "         /!\\            | Mystic Knights – Die Legende von Tir Na Nog ist eine US-amerikanisch-irische Fantasy-Fernsehserie.\n" +
-                                   "        / ! \\           | Sie wurde 1998 von Saban Entertainment produziert.\n" +
-                                   " /\\     )___(           | Die Handlung der Serie basiert teilweise auf der irischen Mythologie.\n" +
-                                   "(  `.____(_)_________   |\n" +
-                                   "|           __..--\"\"    | Hier spielst Du ein Textbasiertes Fan-Rougegame!\n" +
-                                   "(       _.-|            | Deine Aufgabe ist es so viele Level wie möglich zu schaffen.\n" +
-                                   " \\    ,' | |            | Verlierst Du den Kampf faengt das Spiel von neuem an.\n" +
-                                   "  \\  /   | |            | Du hast jede Runde die Moeglichkeit neue Ritter anzuwerben oder vorhandene aufzuruesten.\n" +
-                                   "   \\(    | |            |\n" +
-                                   "    `    | |            | Die Steuerung erfolgt lediglich ueber eine Zahleneingabe. \n" +
-                                   "         | |            | Liegt die Zahl ueber dem angegebenen Wert, wartet das Spiel auf eine korrektur.\n");
-                System.out.println("(1)" + Messages.getString("Main.38"));
+                Ausgabe.spielHistorie();
+                Ausgabe.zurueck();
                 int auswahl = Eingabe.leseInt();
                 if (auswahl == 1) {
                     start();
@@ -138,60 +125,53 @@ public class Spiel {
         int eingabe = -1;
         while (eingabe != 0) {
             //Aktuelles Level
-            System.out.println(Messages.getString("Main.45") + this.lvl);
+            Ausgabe.aktuellesLvl(this.lvl);
             //Falls vorhanden, uebersicht der aktuellen Ritter
             if (!kaempfende.isEmpty()) {
-                System.out.println(Messages.getString("Main.48") + this.kaempfende);
+                Ausgabe.listeRitter(this.kaempfende);
             }
             //Menu
-            System.out.println(Messages.getString("Main.10") + this.gold
-                               + Messages.getString("Main.11")
-                               + Messages.getString("Main.12")
-                               + Messages.getString("Main.13")
-                               + Messages.getString("Main.14")
-                               + Messages.getString("Main.15")
-                               + Messages.getString("Main.35")
-                               + Messages.getString("Main.30"));//$NON-NLS-1$
+            Ausgabe.kampfMenu(this.gold);
             eingabe = Eingabe.leseInt();
             if (eingabe == 1) {
                 this.neuerRitter();
             }
             if (eingabe == 2) {
                 if (this.kaempfende.isEmpty()) {
-                    System.out.println(Messages.getString("Main.39"));
+                    Ausgabe.keineRitter();
                 } else {
                     this.neueWaffe();
                 }
             }
             if (eingabe == 3) {
                 if (this.kaempfende.isEmpty()) {
-                    System.out.println(Messages.getString("Main.39"));
+                    Ausgabe.keineRitter();
                 } else {
                     this.neueRuestung();
                 }
             }
             if (eingabe == 4) {
                 if (this.kaempfende.isEmpty()) {
-                    System.out.println(Messages.getString("Main.39"));
+                    Ausgabe.keineRitter();
                 } else {
                     this.neuerTrank();
                 }
             }
             //Beenden
             if (eingabe == 5) {
-                System.out.println(Messages.getString("Main.37"));
+                Ausgabe.spielBeendet();
                 return;
             }
 
 
             if (this.gold < 0) {
-                System.out.println(Messages.getString("Main.16"));
+                Ausgabe.betrugerHingerichtet();
                 return;
             }
         }
 
         if (this.kaempfende.isEmpty()) {
-            System.out.println(Messages.getString("Main.39"));
+            Ausgabe.keineRitter();
             this.mainMenu();
         } else {
             this.kaempfen();
@@ -200,7 +180,7 @@ public class Spiel {
 
     public int auswahl(Object[] o) {
         if (o == null) {
-            System.out.println(Messages.getString("Main.17"));
+            Ausgabe.aktionVerpufft();
             return -1;
         }
         for (int i = 0; i < o.length; i++) {
@@ -216,7 +196,7 @@ public class Spiel {
     }
 
     public void neueRuestung() {
-        System.out.println(Messages.getString("Main.20"));
+        Ausgabe.welcheRuestung();
         int eingabe = this.auswahl(this.ruestungen);
 
         if (eingabe == this.ruestungen.length) {
@@ -224,9 +204,9 @@ public class Spiel {
         } else if (eingabe >= 0 && eingabe <= this.ruestungen.length - 1) {
             Ruestung r = this.ruestungen[eingabe];
             if (r.getPreis() > this.gold) {
-                System.out.println(Messages.getString("Main.53"));
+                Ausgabe.zuWenigGold();
             } else {
-                System.out.println(Messages.getString("Main.21"));
+                Ausgabe.welcherRitter();
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
                     neueRuestung();
@@ -241,16 +221,16 @@ public class Spiel {
     }
 
     public void neueWaffe() {
-        System.out.println(Messages.getString("Main.22"));
+        Ausgabe.welcheWaffe();
         int eingabe = this.auswahl(this.waffen);
         if (eingabe == this.waffen.length) {
             return;
         } else if (eingabe >= 0 && eingabe <= this.waffen.length - 1) {
             Waffe w = this.waffen[eingabe];
             if (w.getPreis() > this.gold) {
-                System.out.println(Messages.getString("Main.53"));
+                Ausgabe.zuWenigGold();
             } else {
-                System.out.println(Messages.getString("Main.23"));
+                Ausgabe.welcherRitter();
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
                     neueWaffe();
@@ -266,7 +246,7 @@ public class Spiel {
     }
 
     private void neuerTrank() {
-        System.out.println(Messages.getString("Main.36"));
+        Ausgabe.welcherTrank();
         //Eingabe wird zwischengemerkt
         int eingabe = this.auswahl(this.trank);
         //Wenn zurueck gewaehlt
@@ -277,9 +257,9 @@ public class Spiel {
         else if (eingabe >= 0 && eingabe <= this.trank.length - 1) {
             Trank t = this.trank[eingabe];
             if (t.getPreis() > this.gold) {
-                System.out.println(Messages.getString("Main.53"));
+                Ausgabe.zuWenigGold();
             } else {
-                System.out.println(Messages.getString("Main.23"));
+                Ausgabe.welcherRitter();
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
                     neuerTrank();
@@ -295,7 +275,7 @@ public class Spiel {
     }
 
     public void neuerRitter() {
-        System.out.println(Messages.getString("Main.24"));
+        Ausgabe.welcherRitter();
         Kaempfend k = null;
         int wahl = this.auswahl(this.ritter);
         switch (wahl) {
@@ -326,7 +306,7 @@ public class Spiel {
         if (k != null) {
             //Probe ob genug Gold
             if (k.getSold() > this.gold) {
-                System.out.println(Messages.getString("Main.53"));
+                Ausgabe.zuWenigGold();
             } else {
                 this.kaempfende.add(k);
                 this.gold -= k.getSold();
@@ -347,9 +327,7 @@ public class Spiel {
 
                 if (maeven.getGesundheit() <= 0) {
                     //Level geschafft
-                    System.out.println(ConsoleColors.GREEN_BOLD + Messages.getString("Main.26") + ConsoleColors.RESET);
-                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + Messages.getString("Main.25") + ConsoleColors.RESET);
-                    System.out.println(Messages.getString("Main.45") + this.lvl + Messages.getString("Main.46"));
+                    Ausgabe.maevenBesiegt(this.lvl);
                     this.gold += 500;
                     this.lvl++;
                     this.mainMenu();
@@ -364,7 +342,7 @@ public class Spiel {
             }
         }
         //Spiel verloren, faengt bei Level 1 mit 600 Gold an
-        System.out.println(ConsoleColors.RED_UNDERLINED + Messages.getString("Main.47") + ConsoleColors.RESET);
+        Ausgabe.kampfVerloren();
         this.gold = 600;
         this.lvl = 1;
         this.mainMenu();
