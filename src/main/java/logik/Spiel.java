@@ -16,8 +16,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Hauptklasse der Anwendung
+ * Haelt eine Liste an bisher erworbenen Rittern,
+ * einen Gegner, welcher Levelabhaengig an Staerke gewinnt,
+ * Gold, welches zum Start den Wert 600 bestitzt,
+ * die bisher erreichten Level,
+ * sowie alle im Spiel moeglichen Ausruestungen und Sprachpakete der Anwendung.
+ *
+ */
 public class Spiel {
-
 
     Locale defaultLocale = Locale.GERMAN;
     private List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
@@ -38,20 +46,31 @@ public class Spiel {
     }
 
 
+    /**
+     * Moegliche zu erwerbende Ritter
+     */
     private String[] ritter = {Messages.getString("Main.49"), Messages.getString("Main.50"), Messages.getString("Main.51"), Messages.getString("Main.52")};
+    /**
+     * Moegliche zu erwerbende Ruestung
+     */
     private Ruestung[] ruestungen = {
             new Ruestung(Messages.getString("Main.0"), 4, 20),
             new Ruestung(Messages.getString("Main.1"), 6, 50),
             new Ruestung(Messages.getString("Main.2"), 7, 70),
             new Ruestung(Messages.getString("Main.3"), 10, 100)};
 
+    /**
+     * Moegliche zu erwerbende Waffen
+     */
     private Waffe[] waffen = {
             new Waffe(Messages.getString("Main.4"), 4, 30),
             new Waffe(Messages.getString("Main.5"), 7, 70),
             new Waffe(Messages.getString("Main.6"), 8, 90),
             new Waffe(Messages.getString("Main.7"), 10, 120)
     };
-
+    /**
+     * Moegliche zu erwerbende Traenke
+     */
     private Trank[] trank = {
             new Trank(Messages.getString("Main.31"), 10, 50),
             new Trank(Messages.getString("Main.32"), 20, 70),
@@ -59,11 +78,26 @@ public class Spiel {
             new Trank(Messages.getString("Main.34"), 90, 150),
     };
 
+    /**
+     * Sprachen Englisch und Deutsch
+     */
     private String[] sprache = {
             Messages.getString("Main.57"),
             Messages.getString("Main.58"),
     };
 
+
+    /**
+     * Einstiegsmethode der Anwendung, startet das Hauptmenu
+     * Nutzt Hilfsklasse "Ausgabe" fuer Textausgabe im Terminal
+     * erwartet Eingabe des Nutzers, verwendet fuer das einlesen die Hilfklasse "Eingabe"
+     * Auf Basis dieser kann zwischen
+     * - Spiel starten
+     * - Sprache aendern
+     * - Information
+     * - Spiel beenden
+     * entschieden / gewechselt werden
+     */
     public void start() {
         //AusgabeTon.melodie();
         Ausgabe.aktuelleSprache();
@@ -119,6 +153,13 @@ public class Spiel {
         this.mainMenu();
     }
 
+
+    /**
+     * Methode fuer Spielstart
+     * generiert einen Levelspezifischen Gegner und zeigt das Hauptmenu an
+     * Spieler kann Ritter oder Waren (insofern Ritter bereits vorhandne) erwerben und den Kampf starten oder ins Startmenue wechseln
+     *
+     */
     public void mainMenu() {
         maeven = new Maeve();
         int eingabe = -1;
@@ -177,6 +218,13 @@ public class Spiel {
         }
     }
 
+    /**
+     * Hilfsmethode zum Anzeigen und Waehlen der moeglichen Ritter, Waren und Sprachen
+     * bekommt ein Array und erweitert dieses um einen weiteren Menuepunkt "zurueck"
+     * Gibt Eingabe des Nutzers als int zurueck
+     * @param o Array von Objekten
+     * @return int Eingabe des Nutzers
+     */
     public int auswahl(Object[] o) {
         if (o == null) {
             Ausgabe.aktionVerpufft();

@@ -1,5 +1,9 @@
 package ware;
-
+/**
+ * Erweitert Ausruestung um spezifischen Wert "aufbau"
+ * Kann von Spielern erworben werden um Gesundheit zu erhoehen
+ * @author mihammer
+ */
 public class Trank extends Ausruestung{
 
     private int aufbau;
@@ -17,12 +21,6 @@ public class Trank extends Ausruestung{
         return aufbau;
     }
 
-    public int heilen(int gesundheit) {
-        if (gesundheit - aufbau <= 0) {
-            return 0;
-        }
-        return gesundheit + this.aufbau;
-    }
 
 
 

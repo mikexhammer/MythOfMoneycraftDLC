@@ -1,5 +1,10 @@
 package ware;
 
+/**
+ * Erweitert Ausruestung um spezifischen Wert "staerke"
+ * Kann von Spielern erworben werden um Angriffe zu verstaerken
+ * @author mihammer
+ */
 public class Waffe extends Ausruestung{
 
     private int staerke;
@@ -19,12 +24,12 @@ public class Waffe extends Ausruestung{
         return staerke;
     }
 
+    /**
+     * Erhoeht auf Basis von Geschick und Staerke den Angriff der Spielfigur
+     * @param geschick Geschick der Spielfigur
+     * @return neuen Angriffswert
+     */
     public int zuhauen(int geschick) {
         return this.staerke + geschick;
-    }
-
-    @Override
-    public String toString() {
-        return name + " (Preis: " + preis + ")";
     }
 }

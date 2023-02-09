@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/* Nicht dokumentierte Klasse, um direkt Eingaben von der Tastatur/
+/** Nicht dokumentierte Klasse, um direkt Eingaben von der Tastatur/
  * Konsole zu lesen. Die Methoden fangen Fehler ab und geben bei
  * falschen Eingaben "Standardwerte" zurueck.
  * @author kleuker

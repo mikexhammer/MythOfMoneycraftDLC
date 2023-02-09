@@ -1,5 +1,10 @@
 package ware;
 
+
+/**
+ * Zu erweiternde Klasse aller Waren
+ * haelt spezifischen Namen und Preis
+ */
 public class Ausruestung {
     protected String name;
     protected int preis;

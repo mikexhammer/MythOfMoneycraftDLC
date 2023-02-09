@@ -4,11 +4,17 @@ import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
 
+/**
+ * Interface fuer alle Spielfiguren
+ * Figuren besitzen einen individuellen Gesundheitswert, Geschick sowie Preis
+ */
 public abstract class Kaempfend {
+
+    /**
+     * Notwendie Variablen Gesundheit, Geschick der Figur und dessen Preis
+     */
     protected int gesundheit, geschick, sold;
-
     public Kaempfend() {}
-
     public Kaempfend(int gesundheit, int geschick, int sold) {
         this.setGesundheit(gesundheit);
         this.setGeschick(geschick);
@@ -46,12 +52,37 @@ public abstract class Kaempfend {
         return "Kaempfend (Sold: " + sold + ")";
     }
 
-    //Zu ueberschreibende Methoden
+    /**
+     * Wird beim Angriff der Spielfigur aufgerufen, errechnet sich aus dem Geschick und der getragenen Waffe
+     * @return Schadenswert welcher dem Gegner entgegenwirkt
+     */
     public abstract int kaempfen();
+
+    /**
+     * Methode soll uebergebenen Wert aus kaempfen() des Gegners mindern
+     * anschliessend wird Gesundheit um diesen Wert reduziert
+     * @param angriff Wert welcher aus Methode kaempfen() des Gegners uebergeben wird
+     * @return neuen Gesundheitswert
+     */
     public abstract int abwehren(int angriff);
+
+    /**
+     * Dient zum aufnehmen einer neuen Waffe
+     * @param w erworbene Waffe
+     */
     public abstract void nimmWaffe(Waffe w);
+
+    /**
+     * Dient zum aufnehmen einer neuen Ruestung
+     * @param r erworbene Ruestung
+     */
     public abstract void nimmRuestung(Ruestung r);
 
+    /**
+     * Dient zum aufnehmen eines Trankes
+     * Erhoeht die Gesundheit der Spielfigur
+     * @param t erworbener Trank
+     */
     public abstract void nimmTrank(Trank t);
 
 
