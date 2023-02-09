@@ -1,4 +1,4 @@
-package main;
+package helper;
 
 import java.util.Locale;
 import java.util.MissingResourceException;

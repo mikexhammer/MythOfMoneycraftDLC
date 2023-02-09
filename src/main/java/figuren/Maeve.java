@@ -1,7 +1,7 @@
 package figuren;
 
 import java.util.Random;
-import main.ConsoleColors;
+import helper.ConsoleColors;
 
 import ware.Ruestung;
 import ware.Trank;
