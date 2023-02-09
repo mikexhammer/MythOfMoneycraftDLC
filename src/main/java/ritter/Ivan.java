@@ -40,7 +40,7 @@ public class Ivan extends Kaempfend{
 
     @Override
     public void nimmRuestung(Ruestung r) {
-this.ruestung = r;
+        this.ruestung = r;
     }
 
     public void nimmTrank(Trank t) {
