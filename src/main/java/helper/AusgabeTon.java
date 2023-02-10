@@ -26,6 +26,31 @@ public class AusgabeTon {
         }
     }
 
+    public static void melodieNEU() {
+        try {
+            // Load the audio file
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./src/main/resources/sound/melodie.wav"));
+
+            // Get the audio clip
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+
+            // Get the volume control for the audio clip
+            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+            // Reduce the volume by 6 dB (half of the original volume)
+            float volume = volumeControl.getValue();
+            volumeControl.setValue(volume - 30.0f);
+
+            // Play the audio clip
+            clip.start();
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void verloren() {
         try {
             playSound("loose.wav");

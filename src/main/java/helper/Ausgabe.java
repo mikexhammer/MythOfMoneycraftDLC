@@ -1,16 +1,27 @@
 package helper;
 
 import ascii_art.Game;
-
-
+import figuren.Kaempfend;
 import java.util.List;
 import java.util.Locale;
 
 public class Ausgabe {
 
+    public static String paddingText(int size){
+
+    int paddingSize = size;
+    String padding = "";
+        for (int i = 0; i < paddingSize; i++) {
+        padding += "\t";
+    }
+        return padding;
+    }
+
+
+
     //Menues
     public static void startMenu() {
-        Game.title();
+        Game.titel();
     }
 
 
@@ -22,15 +33,16 @@ public class Ausgabe {
                 + Messages.getString("Main.14")
                 + Messages.getString("Main.15")
                 + Messages.getString("Main.35")
-                + Messages.getString("Main.30"));//$NON-NLS-1$
+                + Messages.getString("Main.30"));
     }
 
 
     public static void auswahlStartMenu() {
-        System.out.println(Messages.getString("Main.54") +
-                Messages.getString("Main.55") +
-                Messages.getString("Main.62") +
-                Messages.getString("Main.56"));
+        System.out.println(
+                paddingText(9) + Messages.getString("Main.54") +
+                paddingText(9) + Messages.getString("Main.55") +
+                paddingText(9) + Messages.getString("Main.62") +
+                paddingText(9) + Messages.getString("Main.56"));
     }
 
     public static void spielHistorie(){
@@ -71,9 +83,21 @@ public class Ausgabe {
         System.out.println(ConsoleColors.RED_UNDERLINED + Messages.getString("Main.47") + ConsoleColors.RESET);
     }
 
+    public static void gesundheitKaempfer(Kaempfend k){
+        System.out.println(Messages.getString("Main.28") + k.toString());
+    }
+
+    public static void gesundheitMaeven(Kaempfend maeven){
+        System.out.println(Messages.getString("Main.29") + maeven.getGesundheit() + "\n");
+    }
+
+    public static void kaempferTot(Kaempfend k) {
+        System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
+    }
 
     //Waren kaufen
     public static void welcheRuestung() {
+        Game.schild();
         System.out.println(Messages.getString("Main.20"));
     }
 
@@ -82,14 +106,17 @@ public class Ausgabe {
     }
 
     public static void welcherRitter(){
+        Game.mysticKnights();
         System.out.println(Messages.getString("Main.21"));
     }
 
     public static void welcheWaffe(){
+        Game.schwert();
         System.out.println(Messages.getString("Main.22"));
     }
 
     public static void welcherTrank() {
+        Game.elixier();
         System.out.println(Messages.getString("Main.36"));
     }
 

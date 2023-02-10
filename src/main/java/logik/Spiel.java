@@ -1,5 +1,6 @@
 package logik;
 
+import ascii_art.Game;
 import helper.*;
 import figuren.Kaempfend;
 import figuren.Maeve;
@@ -99,7 +100,8 @@ public class Spiel {
      * entschieden / gewechselt werden
      */
     public void start() {
-        //AusgabeTon.melodie();
+        ConsoleClear.clear();
+        AusgabeTon.melodieNEU();
         Ausgabe.aktuelleSprache();
         Ausgabe.startMenu();
 
@@ -161,6 +163,7 @@ public class Spiel {
      *
      */
     public void mainMenu() {
+        //ConsoleClear.clear();
         maeven = new Maeve(100,5+lvl,100);
         int eingabe = -1;
         while (eingabe != 0) {
@@ -247,6 +250,7 @@ public class Spiel {
      * laesst Spieler Ruestung waehlen, verringert Gold um Preis und fuegt diese zu gewaehltem Ritter hinzu
      */
     public void neueRuestung() {
+        ConsoleClear.clear();
         Ausgabe.welcheRuestung();
         int eingabe = this.auswahl(this.ruestungen);
         if (eingabe == this.ruestungen.length) {
@@ -278,6 +282,7 @@ public class Spiel {
      * laesst Spieler Waffe waehlen, verringert Gold um Preis und fuegt diese zu gewaehltem Ritter hinzu
      */
     public void neueWaffe() {
+        ConsoleClear.clear();
         Ausgabe.welcheWaffe();
         int eingabe = this.auswahl(this.waffen);
         if (eingabe == this.waffen.length) {
@@ -310,6 +315,7 @@ public class Spiel {
      * laesst Spieler Trank waehlen, verringert Gold um Preis und fuegt diese zu gewaehltem Ritter hinzu
      */
     private void neuerTrank() {
+        ConsoleClear.clear();
         Ausgabe.welcherTrank();
         int eingabe = this.auswahl(this.trank);
         if (eingabe == this.trank.length) {
@@ -343,6 +349,7 @@ public class Spiel {
      * verringert Gold um Preis und fuegt diese zur Liste Kaempfende hinzu
      */
     public void neuerRitter() {
+        ConsoleClear.clear();
         Ausgabe.welcherRitter();
         Kaempfend k = null;
         int wahl = this.auswahl(this.ritter);
@@ -392,7 +399,8 @@ public class Spiel {
      * Level wird um 1 erhoeht
      */
     private void kaempfen(){
-
+        ConsoleClear.clear();
+        Game.kampf();
         while (!this.kaempfende.isEmpty()) {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
@@ -411,6 +419,7 @@ public class Spiel {
 
                 if (k.getGesundheit() <= 0) {
                     AusgabeTon.gefallen();
+                    Game.tot();
                     System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
                     kaempfende.remove(k);
                     break;
