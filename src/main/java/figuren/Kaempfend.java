@@ -61,10 +61,10 @@ public abstract class Kaempfend {
     /**
      * Methode soll uebergebenen Wert aus kaempfen() des Gegners mindern
      * anschliessend wird Gesundheit um diesen Wert reduziert
+     *
      * @param angriff Wert welcher aus Methode kaempfen() des Gegners uebergeben wird
-     * @return neuen Gesundheitswert
      */
-    public abstract int abwehren(int angriff);
+    public abstract void abwehren(int angriff);
 
     /**
      * Dient zum aufnehmen einer neuen Waffe

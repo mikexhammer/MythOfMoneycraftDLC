@@ -5,8 +5,6 @@ import ware.Trank;
 import ware.Waffe;
 import figuren.Kaempfend;
 
-import javax.xml.transform.stream.StreamSource;
-
 public class Angus extends Kaempfend{
 
     private Waffe waffe;
@@ -34,8 +32,8 @@ public class Angus extends Kaempfend{
     }
 
     @Override
-    public int abwehren(int angriff) {
-        return this.gesundheit -= angriff;
+    public void abwehren(int angriff) {
+        this.gesundheit -= angriff;
     }
 
     @Override
@@ -72,7 +70,11 @@ public class Angus extends Kaempfend{
     }
 
 
+    public Ruestung getRuestung() {
+        return ruestung;
+    }
 
-
-
+    public void setRuestung(Ruestung ruestung) {
+        this.ruestung = ruestung;
+    }
 }

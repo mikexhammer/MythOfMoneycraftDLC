@@ -29,8 +29,8 @@ public class Ivan extends Kaempfend{
     }
 
     @Override
-    public int abwehren(int angriff) {
-        return this.gesundheit -= angriff;
+    public void abwehren(int angriff) {
+        this.gesundheit -= angriff;
     }
 
     @Override
@@ -66,7 +66,11 @@ public class Ivan extends Kaempfend{
     }
 
 
+    public Ruestung getRuestung() {
+        return ruestung;
+    }
 
-
-
+    public void setRuestung(Ruestung ruestung) {
+        this.ruestung = ruestung;
+    }
 }
