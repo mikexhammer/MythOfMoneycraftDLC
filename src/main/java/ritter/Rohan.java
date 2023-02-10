@@ -48,12 +48,12 @@ public class Rohan extends Kaempfend {
     }
 
     @Override
-    public int abwehren(int angriff) {
+    public void abwehren(int angriff) {
         int schadenswert = angriff;
         if (this.ruestung != null) {
             schadenswert = ruestung.abwehr(schadenswert);
         }
-        return this.gesundheit -= schadenswert;
+        this.gesundheit -= schadenswert;
     }
 
 

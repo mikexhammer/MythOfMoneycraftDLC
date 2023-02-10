@@ -1,6 +1,5 @@
 package figuren;
 
-import java.util.Random;
 import helper.ConsoleColors;
 
 import ware.Ruestung;
@@ -47,9 +46,9 @@ public class Maeve extends Kaempfend{
     }
 
     @Override
-    public int abwehren(int angriff) {
+    public void abwehren(int angriff) {
         //Angriff wird mit 0 oder 1 multipliziert, manchmal wehrt er also vollkommen ab!
-        return this.gesundheit -= angriff*(Math.round(Math.random()));
+        this.gesundheit -= angriff * (Math.round(Math.random()));
     }
 
     @Override

@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class Spiel {
 
     Locale defaultLocale = Locale.GERMAN;
-    private List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
+    private final List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
     private Kaempfend maeven;
     private int gold = 200;
     private int lvl = 1;
@@ -49,11 +49,11 @@ public class Spiel {
     /**
      * Moegliche zu erwerbende Ritter
      */
-    private String[] ritter = {Messages.getString("Main.49"), Messages.getString("Main.50"), Messages.getString("Main.51"), Messages.getString("Main.52")};
+    private final String[] ritter = {Messages.getString("Main.49"), Messages.getString("Main.50"), Messages.getString("Main.51"), Messages.getString("Main.52")};
     /**
      * Moegliche zu erwerbende Ruestung
      */
-    private Ruestung[] ruestungen = {
+    private final Ruestung[] ruestungen = {
             new Ruestung(Messages.getString("Main.0"), 4, 20),
             new Ruestung(Messages.getString("Main.1"), 6, 50),
             new Ruestung(Messages.getString("Main.2"), 7, 70),
@@ -62,7 +62,7 @@ public class Spiel {
     /**
      * Moegliche zu erwerbende Waffen
      */
-    private Waffe[] waffen = {
+    private final Waffe[] waffen = {
             new Waffe(Messages.getString("Main.4"), 4, 30),
             new Waffe(Messages.getString("Main.5"), 7, 70),
             new Waffe(Messages.getString("Main.6"), 8, 90),
@@ -71,7 +71,7 @@ public class Spiel {
     /**
      * Moegliche zu erwerbende Traenke
      */
-    private Trank[] trank = {
+    private final Trank[] trank = {
             new Trank(Messages.getString("Main.31"), 10, 50),
             new Trank(Messages.getString("Main.32"), 20, 70),
             new Trank(Messages.getString("Main.33"), 50, 100),
@@ -81,7 +81,7 @@ public class Spiel {
     /**
      * Sprachen Englisch und Deutsch
      */
-    private String[] sprache = {
+    private final String[] sprache = {
             Messages.getString("Main.57"),
             Messages.getString("Main.58"),
     };
@@ -397,7 +397,7 @@ public class Spiel {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
                 k.abwehren(maeven.kaempfen());
-                System.out.println(Messages.getString("Main.28") + k.toString());
+                System.out.println(Messages.getString("Main.28") + k);
                 System.out.println(Messages.getString("Main.29") + maeven.getGesundheit() + "\n");
 
                 if (maeven.getGesundheit() <= 0) {
@@ -411,7 +411,7 @@ public class Spiel {
 
                 if (k.getGesundheit() <= 0) {
                     AusgabeTon.gefallen();
-                    System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED_BOLD + k + Messages.getString("Main.27") + ConsoleColors.RESET);
                     kaempfende.remove(k);
                     break;
                 }

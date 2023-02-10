@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Neue-Schlacht:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Neue_Schlacht_jar</output-path>
+    <root id="archive" name="Neue-Schlacht.jar">
+      <element id="module-output" name="Neue-Schlacht" />
+    </root>
+  </artifact>
+</component>
