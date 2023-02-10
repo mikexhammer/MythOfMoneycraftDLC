@@ -34,9 +34,9 @@ public class Rohan extends Kaempfend {
             for (Waffe w : waffen) {
                 schadenswert += w.zuhauen(geschick);
                 if(hand % 2 == 0) {
-                    System.out.println("Rohan haut mit links!");
+                    System.out.println("Rohan schlaegt mit seiner linken Waffe!");
                 } else {
-                    System.out.println("Rohan haut mit rechts!");
+                    System.out.println("Rohan schlaegt mit seiner rechten Waffe!");
                 }
                 hand++;
             }

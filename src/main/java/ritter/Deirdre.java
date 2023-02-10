@@ -24,9 +24,9 @@ public class Deirdre extends Kaempfend {
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Deirdre haut zu!");
+            System.out.println("Deirdre schlaegt mit ihrer Waffe!");
         } else {
-            System.out.println("Deirdre haut mit Faeusten!");
+            System.out.println("Deirdre schlaegt mit Faeusten!");
             schadenswert = geschick;
         }
         return schadenswert;

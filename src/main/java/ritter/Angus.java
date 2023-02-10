@@ -19,14 +19,17 @@ public class Angus extends Kaempfend{
 
     @Override
     public int kaempfen() {
+
+        //Hier Rechteck
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Angus haut zu!");
+            System.out.println("Angus schlaegt mit seiner Waffe!");
         } else {
-            System.out.println("Angus haut mit Faeusten!");
+            System.out.println("Angus schlaegt mit Faeusten!");
             schadenswert = geschick;
         }
+
         return schadenswert;
     }
 

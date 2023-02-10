@@ -32,4 +32,6 @@ public class Waffe extends Ausruestung{
     public int zuhauen(int geschick) {
         return this.staerke + geschick;
     }
+
+
 }

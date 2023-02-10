@@ -96,7 +96,7 @@ public class Ausgabe {
 
     //Aktionen
     public static void zurueck() {
-        System.out.println("(1)" + Messages.getString("Main.38"));
+        System.out.println("(Taste)" + Messages.getString("Main.38"));
     }
 
     public static void aktionVerpufft() {
@@ -108,7 +108,7 @@ public class Ausgabe {
     }
 
     public static void aktuellesLvl(int lvl){
-        System.out.println(Messages.getString("Main.45") + lvl);
+        System.out.println(Messages.getString("Main.45") + " " + lvl);
     }
 
     public static void keineRitter() {

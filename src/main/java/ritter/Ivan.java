@@ -20,9 +20,9 @@ public class Ivan extends Kaempfend{
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Ivan haut zu!");
+            System.out.println("Ivan schlaegt mit seiner Waffe!");
         } else {
-            System.out.println("Ivan haut mit Faeusten!");
+            System.out.println("Ivan schlaegt mit Faeusten!");
             schadenswert = geschick;
         }
         return schadenswert;

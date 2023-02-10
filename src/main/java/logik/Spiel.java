@@ -30,7 +30,7 @@ public class Spiel {
     Locale defaultLocale = Locale.GERMAN;
     private List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
     private Kaempfend maeven;
-    private int gold = 600;
+    private int gold = 200;
     private int lvl = 1;
 
     public List<Kaempfend> getKaempfende() {
@@ -161,7 +161,7 @@ public class Spiel {
      *
      */
     public void mainMenu() {
-        maeven = new Maeve();
+        maeven = new Maeve(100,5+lvl,100);
         int eingabe = -1;
         while (eingabe != 0) {
             //Aktuelles Level
@@ -233,7 +233,6 @@ public class Spiel {
         for (int i = 0; i < o.length; i++) {
             System.out.println("(" + i + ") " + o[i]);
         }
-        //Zurueck
         System.out.println("(" + o.length + ") " + Messages.getString("Main.38"));
         int ergebnis = -1;
         while (ergebnis < 0 || ergebnis >= o.length + 1) {
@@ -242,16 +241,21 @@ public class Spiel {
         return ergebnis;
     }
 
+    /**
+     * Ermoeglicht dem Spieler den Erwerb einer neuen Ruestung
+     * prueft ob genuegend Gold vorhanden ist
+     * laesst Spieler Ruestung waehlen, verringert Gold um Preis und fuegt diese zu gewaehltem Ritter hinzu
+     */
     public void neueRuestung() {
         Ausgabe.welcheRuestung();
         int eingabe = this.auswahl(this.ruestungen);
-
         if (eingabe == this.ruestungen.length) {
             return;
         } else if (eingabe >= 0 && eingabe <= this.ruestungen.length - 1) {
             Ruestung r = this.ruestungen[eingabe];
             if (r.getPreis() > this.gold) {
                 Ausgabe.zuWenigGold();
+                neueRuestung();
             } else {
                 Ausgabe.welcherRitter();
                 eingabe = this.auswahl(this.kaempfende.toArray());
@@ -261,12 +265,18 @@ public class Spiel {
                     Kaempfend k = this.kaempfende.get(eingabe);
                     this.gold -= r.getPreis();
                     k.nimmRuestung(r);
+
                 }
             }
         }
 
     }
 
+    /**
+     * Ermoeglicht dem Spieler den Erwerb einer neuen Waffe
+     * prueft ob genuegend Gold vorhanden ist
+     * laesst Spieler Waffe waehlen, verringert Gold um Preis und fuegt diese zu gewaehltem Ritter hinzu
+     */
     public void neueWaffe() {
         Ausgabe.welcheWaffe();
         int eingabe = this.auswahl(this.waffen);
@@ -276,6 +286,7 @@ public class Spiel {
             Waffe w = this.waffen[eingabe];
             if (w.getPreis() > this.gold) {
                 Ausgabe.zuWenigGold();
+                neueWaffe();
             } else {
                 Ausgabe.welcherRitter();
                 eingabe = this.auswahl(this.kaempfende.toArray());
@@ -285,6 +296,7 @@ public class Spiel {
                     Kaempfend k = this.kaempfende.get(eingabe);
                     this.gold -= w.getPreis();
                     k.nimmWaffe(w);
+
                 }
             }
         }
@@ -292,19 +304,22 @@ public class Spiel {
 
     }
 
+    /**
+     * Ermoeglicht dem Spieler den Erwerb eines neuen Tranks
+     * prueft ob genuegend Gold vorhanden ist
+     * laesst Spieler Trank waehlen, verringert Gold um Preis und fuegt diese zu gewaehltem Ritter hinzu
+     */
     private void neuerTrank() {
         Ausgabe.welcherTrank();
-        //Eingabe wird zwischengemerkt
         int eingabe = this.auswahl(this.trank);
-        //Wenn zurueck gewaehlt
         if (eingabe == this.trank.length) {
             return;
         }
-        //Bei gueltiger Auswahl
         else if (eingabe >= 0 && eingabe <= this.trank.length - 1) {
             Trank t = this.trank[eingabe];
             if (t.getPreis() > this.gold) {
                 Ausgabe.zuWenigGold();
+                neuerTrank();
             } else {
                 Ausgabe.welcherRitter();
                 eingabe = this.auswahl(this.kaempfende.toArray());
@@ -314,6 +329,7 @@ public class Spiel {
                     Kaempfend k = this.kaempfende.get(eingabe);
                     this.gold -= t.getPreis();
                     k.nimmTrank(t);
+
                 }
             }
         }
@@ -321,6 +337,11 @@ public class Spiel {
 
     }
 
+    /**
+     * Ermoeglicht dem Spieler den Erwerb eines neuen Ritters
+     * laesst Spieler Ritter waehlen, prueft ob genuegend Gold vorhanden ist
+     * verringert Gold um Preis und fuegt diese zur Liste Kaempfende hinzu
+     */
     public void neuerRitter() {
         Ausgabe.welcherRitter();
         Kaempfend k = null;
@@ -351,25 +372,32 @@ public class Spiel {
             }
         }
         if (k != null) {
-            //Probe ob genug Gold
             if (k.getSold() > this.gold) {
                 Ausgabe.zuWenigGold();
+                neuerRitter();
             } else {
                 this.kaempfende.add(k);
                 this.gold -= k.getSold();
+
             }
         }
     }
 
+    /**
+     * Iteriert durch Liste Kaempfende
+     * fuehrt fuer jeden Eintrag die Methode kaempfen() und anschliessend abwehren() aus
+     * bei negativer / nicht vorhandener Gesundheit des Ritters wird dieser aus der Liste entfernt
+     * bei negativer / nicht vorhandener Gesundheit des Gegners, Maeve, ist das Level gewonnen
+     * Gold wird somit um 500 erhoeht
+     * Level wird um 1 erhoeht
+     */
     private void kaempfen(){
 
         while (!this.kaempfende.isEmpty()) {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
                 k.abwehren(maeven.kaempfen());
-                //Gesundheit Ritter
                 System.out.println(Messages.getString("Main.28") + k.toString());
-                //Gesundheit Maeven
                 System.out.println(Messages.getString("Main.29") + maeven.getGesundheit() + "\n");
 
                 if (maeven.getGesundheit() <= 0) {
@@ -382,7 +410,6 @@ public class Spiel {
                 }
 
                 if (k.getGesundheit() <= 0) {
-                    //Kaempfer besiegt
                     AusgabeTon.gefallen();
                     System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
                     kaempfende.remove(k);
@@ -396,7 +423,7 @@ public class Spiel {
                 }
             }
         }
-        //Spiel verloren, faengt bei Level 1 mit 600 Gold an
+
         Ausgabe.kampfVerloren();
         AusgabeTon.verloren();
         this.gold = 600;

@@ -10,6 +10,7 @@ import ware.Waffe;
 
 /**
  * Gegner Spielfigur gegen welche jede Runde gekaempft wird
+ * Geschick hat keine Grenze
  */
 public class Maeve extends Kaempfend{
 
@@ -49,6 +50,11 @@ public class Maeve extends Kaempfend{
     public int abwehren(int angriff) {
         //Angriff wird mit 0 oder 1 multipliziert, manchmal wehrt er also vollkommen ab!
         return this.gesundheit -= angriff*(Math.round(Math.random()));
+    }
+
+    @Override
+    public void setGeschick(int geschick) {
+        this.geschick = geschick;
     }
 
     @Override
