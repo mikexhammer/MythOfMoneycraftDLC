@@ -1,5 +1,6 @@
 package ritter;
 
+import helper.Messages;
 import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
@@ -16,7 +17,7 @@ public class Deirdre extends Kaempfend {
 
     @Override
     public String toString() {
-        return "Deirdre: "  + this.gesundheit;
+        return "Deirdre: " + Messages.getString("Main.63") + this.gesundheit + Messages.getString("Main.64") + this.geschick;
     }
 
     @Override

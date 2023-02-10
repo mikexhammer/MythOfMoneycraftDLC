@@ -1,6 +1,7 @@
 package ritter;
 
 import figuren.Kaempfend;
+import helper.Messages;
 import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
@@ -54,7 +55,7 @@ public class Ivan extends Kaempfend{
 
     @Override
     public String toString() {
-        return "Ivan: " + this.gesundheit;
+        return "Ivan: " + Messages.getString("Main.63") + this.gesundheit + Messages.getString("Main.64") + this.geschick;
     }
 
     public Waffe getWaffe() {

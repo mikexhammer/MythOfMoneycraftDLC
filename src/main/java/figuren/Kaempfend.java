@@ -32,9 +32,11 @@ public abstract class Kaempfend {
         this.gesundheit = gesundheit;
         }
     }
+
     public int getGeschick() {
         return geschick;
     }
+
     public void setGeschick(int geschick) {
         if (geschick >= 0 && geschick <= 10) {
             this.geschick = geschick;
@@ -61,9 +63,9 @@ public abstract class Kaempfend {
     /**
      * Methode soll uebergebenen Wert aus kaempfen() des Gegners mindern
      * anschliessend wird Gesundheit um diesen Wert reduziert
-     *
      * @param angriff Wert welcher aus Methode kaempfen() des Gegners uebergeben wird
      */
+
     public abstract void abwehren(int angriff);
 
     /**
@@ -84,7 +86,5 @@ public abstract class Kaempfend {
      * @param t erworbener Trank
      */
     public abstract void nimmTrank(Trank t);
-
-
 
 }

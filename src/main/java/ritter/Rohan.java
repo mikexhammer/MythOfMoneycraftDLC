@@ -1,11 +1,11 @@
 package ritter;
 
+import helper.Messages;
 import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
 import figuren.Kaempfend;
 import helper.ConsoleColors;
-//import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Rohan extends Kaempfend {
 
     @Override
     public String toString() {
-        return "Rohan: " + this.gesundheit;
+        return "Angus: " + Messages.getString("Main.63") + this.gesundheit + Messages.getString("Main.64") + this.geschick;
     }
 
     @Override

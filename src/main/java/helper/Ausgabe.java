@@ -7,6 +7,23 @@ import java.util.Locale;
 
 public class Ausgabe {
 
+    public static void dottedLine(){
+        String line2 = "";
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < 60; i++) {
+            line.append("-");
+        }
+        System.out.println(line);
+    }
+
+    public static String dottedLineReturn(){
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < 60; i++) {
+            line.append("-");
+        }
+        return line.toString();
+    }
+
     public static String paddingText(int size){
 
     int paddingSize = size;
@@ -26,8 +43,9 @@ public class Ausgabe {
 
 
     public static void kampfMenu(int gold) {
-        System.out.println(Messages.getString("Main.10") + gold
-                + Messages.getString("Main.11")
+        System.out.println(
+                  Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11") +"\n"
+                + Ausgabe.dottedLineReturn()
                 + Messages.getString("Main.12")
                 + Messages.getString("Main.13")
                 + Messages.getString("Main.14")
@@ -46,7 +64,7 @@ public class Ausgabe {
     }
 
     public static void spielHistorie(){
-        Game.infoSpiel();
+        Game.infoSpielNeu();
     }
 
 
@@ -96,28 +114,41 @@ public class Ausgabe {
     }
 
     //Waren kaufen
-    public static void welcheRuestung() {
+    public static void welcheRuestung(int gold) {
         Game.schild();
+        Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.20"));
+        System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
+        Ausgabe.dottedLine();
     }
 
     public static void zuWenigGold() {
         System.out.println(Messages.getString("Main.53"));
     }
 
-    public static void welcherRitter(){
+    public static void welcherRitter(int gold){
         Game.mysticKnights();
+        Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.21"));
+        System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
+        Ausgabe.dottedLine();
     }
 
-    public static void welcheWaffe(){
-        Game.schwert();
+
+    public static void welcheWaffe(int gold){
+        Game.waffen();
+        Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.22"));
+        System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
+        Ausgabe.dottedLine();
     }
 
-    public static void welcherTrank() {
+    public static void welcherTrank(int gold) {
         Game.elixier();
+        Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.36"));
+        System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
+        Ausgabe.dottedLine();
     }
 
 
@@ -135,11 +166,11 @@ public class Ausgabe {
     }
 
     public static void aktuellesLvl(int lvl){
-        System.out.println(Messages.getString("Main.45") + " " + lvl);
+        System.out.println(ConsoleColors.GREEN_BOLD + Messages.getString("Main.45") + " " + lvl + ConsoleColors.RESET);
     }
 
     public static void keineRitter() {
-        System.out.println(Messages.getString("Main.39"));
+        System.out.println(ConsoleColors.RED_BOLD + Messages.getString("Main.39") + ConsoleColors.RESET);
     }
 
     public static void listeRitter(List kaempfende) {

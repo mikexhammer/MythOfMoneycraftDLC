@@ -163,11 +163,12 @@ public class Spiel {
      *
      */
     public void mainMenu() {
-        //ConsoleClear.clear();
+        ConsoleClear.clear();
         maeven = new Maeve(100,5+lvl,100);
         int eingabe = -1;
         while (eingabe != 0) {
             //Aktuelles Level
+            Ausgabe.dottedLine();
             Ausgabe.aktuellesLvl(this.lvl);
             //Falls vorhanden, uebersicht der aktuellen Ritter
             if (!kaempfende.isEmpty()) {
@@ -251,7 +252,7 @@ public class Spiel {
      */
     public void neueRuestung() {
         ConsoleClear.clear();
-        Ausgabe.welcheRuestung();
+        Ausgabe.welcheRuestung(this.gold);
         int eingabe = this.auswahl(this.ruestungen);
         if (eingabe == this.ruestungen.length) {
             return;
@@ -261,7 +262,7 @@ public class Spiel {
                 Ausgabe.zuWenigGold();
                 neueRuestung();
             } else {
-                Ausgabe.welcherRitter();
+                Ausgabe.welcherRitter(this.gold);
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
                     neueRuestung();
@@ -283,7 +284,7 @@ public class Spiel {
      */
     public void neueWaffe() {
         ConsoleClear.clear();
-        Ausgabe.welcheWaffe();
+        Ausgabe.welcheWaffe(this.gold);
         int eingabe = this.auswahl(this.waffen);
         if (eingabe == this.waffen.length) {
             return;
@@ -293,7 +294,7 @@ public class Spiel {
                 Ausgabe.zuWenigGold();
                 neueWaffe();
             } else {
-                Ausgabe.welcherRitter();
+                Ausgabe.welcherRitter(this.gold);
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
                     neueWaffe();
@@ -316,7 +317,7 @@ public class Spiel {
      */
     private void neuerTrank() {
         ConsoleClear.clear();
-        Ausgabe.welcherTrank();
+        Ausgabe.welcherTrank(this.gold);
         int eingabe = this.auswahl(this.trank);
         if (eingabe == this.trank.length) {
             return;
@@ -327,7 +328,7 @@ public class Spiel {
                 Ausgabe.zuWenigGold();
                 neuerTrank();
             } else {
-                Ausgabe.welcherRitter();
+                Ausgabe.welcherRitter(this.gold);
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
                     neuerTrank();
@@ -350,7 +351,7 @@ public class Spiel {
      */
     public void neuerRitter() {
         ConsoleClear.clear();
-        Ausgabe.welcherRitter();
+        Ausgabe.welcherRitter(this.gold);
         Kaempfend k = null;
         int wahl = this.auswahl(this.ritter);
         switch (wahl) {
@@ -400,7 +401,7 @@ public class Spiel {
      */
     private void kaempfen(){
         ConsoleClear.clear();
-        Game.kampf();
+        Game.kampfNeu();
         while (!this.kaempfende.isEmpty()) {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
