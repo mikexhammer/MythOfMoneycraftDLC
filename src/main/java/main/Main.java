@@ -13,9 +13,8 @@ import java.util.Locale;
 public class Main {
 
     public static void main(String[] args) {
-        Messages.changeLocation(new Locale("de","DE"));
         Spiel spiel = new Spiel();
-        AusgabeTon.melodieNEU();
+        //AusgabeTon.melodieNEU();
         spiel.initialize();
         spiel.start();
     }

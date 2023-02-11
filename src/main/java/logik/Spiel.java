@@ -73,12 +73,14 @@ public class Spiel {
     /**
      * Sprachen Englisch und Deutsch
      */
-    private String[] sprache = {
-            Messages.getString("Main.57"),
-            Messages.getString("Main.58"),
-    };
+    private String[] sprache;
 
     public void initialize() {
+        sprache = new String[]{
+        Messages.getString("Main.57"),
+        Messages.getString("Main.58"),
+        };
+
         trank = new Trank[] {
                 new Trank(Messages.getString("Main.31"), 10, 50),
                 new Trank(Messages.getString("Main.32"), 20, 70),
@@ -97,7 +99,11 @@ public class Spiel {
                 new Ruestung(Messages.getString("Main.2"), 7, 70),
                 new Ruestung(Messages.getString("Main.3"), 10, 100)};
 
-        ritter = new String[]{Ausgabe.ritterAnzeige(Rohan, 60, 6, 120), Ausgabe.ritterAnzeige(Dierdre, 30, 8, 130), Ausgabe.ritterAnzeige(Angus, 90, 6, 140), Ausgabe.ritterAnzeige(Ivan, 80, 7, 150)};
+        ritter = new String[]{
+                Ausgabe.ritterAnzeige(Rohan, 60, 6, 120),
+                Ausgabe.ritterAnzeige(Dierdre, 30, 8, 130),
+                Ausgabe.ritterAnzeige(Angus, 90, 6, 140),
+                Ausgabe.ritterAnzeige(Ivan, 80, 7, 150)};
     }
 
 
@@ -121,7 +127,6 @@ public class Spiel {
 
         while (eingabe != 0) {
             Ausgabe.auswahlStartMenu();
-
             eingabe = Eingabe.leseInt();
 
             if (eingabe == 1) {
@@ -180,11 +185,19 @@ public class Spiel {
         int eingabe = -1;
         while (eingabe != 0) {
             //Aktuelles Level
-            Ausgabe.dottedLine();
+            Ausgabe.dottedLine(150);
             Ausgabe.aktuellesLvl(this.lvl);
             //Falls vorhanden, uebersicht der aktuellen Ritter
             if (!kaempfende.isEmpty()) {
-                Ausgabe.listeRitter(this.kaempfende);
+                Ausgabe.asterikLine(9);
+                Ausgabe.aktuelleRitter();
+                for (Kaempfend k: kaempfende){
+                Ausgabe.listeRitter(k);
+                if (kaempfende.size() > 1){
+                    Ausgabe.dottedLine(5);
+                }
+                }
+                Ausgabe.asterikLine(9);
             }
             //Menu
             Ausgabe.kampfMenu(this.gold);

@@ -24,7 +24,7 @@ public class Rohan extends Kaempfend {
 
     @Override
     public String toString() {
-        return Ausgabe.ritterAnzeige(name,this.gesundheit,this.geschick);
+        return Ausgabe.ritterAnzeige(this, name, waffen,ruestung);
     }
 
     @Override

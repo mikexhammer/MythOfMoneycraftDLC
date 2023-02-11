@@ -61,7 +61,7 @@ public class Angus extends Kaempfend{
 
     @Override
     public String toString() {
-        return Ausgabe.ritterAnzeige(name,this.gesundheit,this.geschick);
+        return Ausgabe.ritterAnzeige(this, name,waffe,ruestung);
     }
 
     public Waffe getWaffe() {

@@ -2,6 +2,10 @@ package helper;
 
 import ascii_art.Game;
 import figuren.Kaempfend;
+import ritter.Angus;
+import ware.Ruestung;
+import ware.Waffe;
+
 import java.util.List;
 import java.util.Locale;
 
@@ -33,9 +37,11 @@ public class Ausgabe {
         return ritter;
     }
 
-    public static String ritterAnzeige(String ritter, int life, int skill){
-        life = life/10;
+    public static String ritterAnzeige(Kaempfend k, String ritter, Waffe w, Ruestung r){
+        int life = k.getGesundheit()/10;
+        k.getGeschick();
         ritter+= Messages.getString("Main.63") + "[";
+        //Lebensanzeige
         if (life >0 ){
             for (int i = 0; i < life; i++) {
                 ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
@@ -43,19 +49,94 @@ public class Ausgabe {
             for (int j = life; j < 10; j++) {
                 ritter += " ";
             }
+        //Wenn tot
         } else {
             for (int i = 0; i < 10; i++) {
                 ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
-        for (int k = 0; k < skill; k++) {
-            ritter+=ConsoleColors.BLUE_BACKGROUND+" "+ ConsoleColors.RESET;
+        //Skillanzeige
+        for (int e = 0; e < k.getGeschick(); e++) {
+            ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
         }
-        for (int l = skill; l < 10; l++) {
+        for (int l = k.getGeschick(); l < 10; l++) {
             ritter+=" ";
         }
         ritter+="]";
+
+        if(w != null){
+            ritter+="   " + Messages.getString("Main.66") + "[";
+            ritter+= ConsoleColors.RED_BACKGROUND + w.getName() + ConsoleColors.RESET;
+            for (int i = w.getName().length(); i < 12; i++) {
+                ritter+= " ";
+            }
+            ritter+="]";
+        }
+
+        if (r != null){
+            ritter+="   " + Messages.getString("Main.67") + "[";
+            ritter+= ConsoleColors.BLUE_BACKGROUND + r.getName() + ConsoleColors.RESET;
+            for (int i = r.getName().length(); i < 15; i++) {
+                ritter+= " ";
+            }
+            ritter+="]";
+        }
+        return ritter;
+    }
+
+    public static String ritterAnzeige(Kaempfend k, String ritter, List<Waffe> w, Ruestung r){
+        int life = k.getGesundheit()/10;
+        k.getGeschick();
+        ritter+= Messages.getString("Main.63") + "[";
+        //Lebensanzeige
+        if (life >0 ){
+            for (int i = 0; i < life; i++) {
+                ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+            for (int j = life; j < 10; j++) {
+                ritter += " ";
+            }
+            //Wenn tot
+        } else {
+            for (int i = 0; i < 10; i++) {
+                ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+        }
+        ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
+        //Skillanzeige
+        for (int e = 0; e < k.getGeschick(); e++) {
+            ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
+        }
+        for (int l = k.getGeschick(); l < 10; l++) {
+            ritter+=" ";
+        }
+        ritter+="]";
+
+        if(w.size() != 0){
+            ritter+="   " + Messages.getString("Main.66") + "[";
+            ritter+= ConsoleColors.RED_BACKGROUND + w.get(0).getName() + ConsoleColors.RESET;
+                if (w.size() == 2) {
+                    ritter+= ConsoleColors.RED_BACKGROUND + ", " + w.get(1).getName() + ConsoleColors.RESET;
+                for (int i = (w.get(0).getName().length()+w.get(1).getName().length()); i < 12; i++) {
+                    ritter+= " ";
+                }
+                } else {
+                    for (int i = w.get(0).getName().length(); i < 12; i++) {
+                        ritter += " ";
+                    }
+                }
+            ritter+="]";
+        }
+
+        if (r != null){
+            ritter+="   " + Messages.getString("Main.67") + "[";
+            ritter+= ConsoleColors.BLUE_BACKGROUND + r.getName() + ConsoleColors.RESET;
+            for (int i = r.getName().length(); i < 15; i++) {
+                ritter+= " ";
+            }
+            ritter+="]";
+        }
         return ritter;
     }
 
@@ -69,12 +150,38 @@ public class Ausgabe {
         System.out.println(line);
     }
 
+    public static void dottedLine(int j){
+        String line2 = "";
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < j; i++) {
+            line.append("-");
+        }
+        System.out.println(line);
+    }
+
     public static String dottedLineReturn(){
         StringBuilder line = new StringBuilder();
         for (int i = 0; i < 80; i++) {
             line.append("-");
         }
         return line.toString();
+    }
+
+    public static String dottedLineReturn(int j){
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < j; i++) {
+            line.append("-");
+        }
+        return line.toString();
+    }
+
+    public static void asterikLine(int j){
+        String line2 = "";
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < j; i++) {
+            line.append("*");
+        }
+        System.out.println(line);
     }
 
     public static String paddingText(int size){
@@ -98,7 +205,7 @@ public class Ausgabe {
     public static void kampfMenu(int gold) {
         System.out.println(
                   Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11") +"\n"
-                + Ausgabe.dottedLineReturn()
+                + Ausgabe.dottedLineReturn(150)
                 + Messages.getString("Main.12")
                 + Messages.getString("Main.13")
                 + Messages.getString("Main.14")
@@ -226,8 +333,12 @@ public class Ausgabe {
         System.out.println(ConsoleColors.RED_BOLD + Messages.getString("Main.39") + ConsoleColors.RESET);
     }
 
-    public static void listeRitter(List kaempfende) {
-        System.out.println(Messages.getString("Main.48") + kaempfende);
+    public static void aktuelleRitter(){
+        System.out.println(ConsoleColors.WHITE_BOLD + Messages.getString("Main.48") + ConsoleColors.RESET);
+    }
+
+    public static void listeRitter(Kaempfend kaempfende) {
+        System.out.println(kaempfende);
     }
 
     public static void betrugerHingerichtet(){
