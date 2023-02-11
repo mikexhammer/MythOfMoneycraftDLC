@@ -255,6 +255,7 @@ public class Spiel {
         Ausgabe.welcheRuestung(this.gold);
         int eingabe = this.auswahl(this.ruestungen);
         if (eingabe == this.ruestungen.length) {
+            ConsoleClear.clear();
             return;
         } else if (eingabe >= 0 && eingabe <= this.ruestungen.length - 1) {
             Ruestung r = this.ruestungen[eingabe];
@@ -287,6 +288,7 @@ public class Spiel {
         Ausgabe.welcheWaffe(this.gold);
         int eingabe = this.auswahl(this.waffen);
         if (eingabe == this.waffen.length) {
+            ConsoleClear.clear();
             return;
         } else if (eingabe >= 0 && eingabe <= this.waffen.length - 1) {
             Waffe w = this.waffen[eingabe];
@@ -320,6 +322,7 @@ public class Spiel {
         Ausgabe.welcherTrank(this.gold);
         int eingabe = this.auswahl(this.trank);
         if (eingabe == this.trank.length) {
+            ConsoleClear.clear();
             return;
         }
         else if (eingabe >= 0 && eingabe <= this.trank.length - 1) {
@@ -372,6 +375,7 @@ public class Spiel {
                 break;
             }
             case 4: {
+                ConsoleClear.clear();
                 break;
             }
             default: {
