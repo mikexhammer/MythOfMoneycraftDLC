@@ -7,10 +7,63 @@ import java.util.Locale;
 
 public class Ausgabe {
 
+    public static String ritterAnzeige(String ritter, int life, int skill, int coins){
+        life = life/10;
+        ritter+= Messages.getString("Main.63") + "[";
+        if (life >0 ){
+            for (int i = 0; i < life; i++) {
+                ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+            for (int j = life; j < 10; j++) {
+                ritter += " ";
+            }
+        } else {
+            for (int i = 0; i < 10; i++) {
+                ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+        }
+        ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
+        for (int k = 0; k < skill; k++) {
+            ritter+=ConsoleColors.BLUE_BACKGROUND+" "+ ConsoleColors.RESET;
+        }
+        for (int l = skill; l < 10; l++) {
+            ritter+=" ";
+        }
+        ritter+="]"+ "\t" + Messages.getString("Main.65") + "[" + ConsoleColors.YELLOW_BACKGROUND + " " + coins + " " + ConsoleColors.RESET + "]\n" + Ausgabe.dottedLineReturn();
+        return ritter;
+    }
+
+    public static String ritterAnzeige(String ritter, int life, int skill){
+        life = life/10;
+        ritter+= Messages.getString("Main.63") + "[";
+        if (life >0 ){
+            for (int i = 0; i < life; i++) {
+                ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+            for (int j = life; j < 10; j++) {
+                ritter += " ";
+            }
+        } else {
+            for (int i = 0; i < 10; i++) {
+                ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+        }
+        ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
+        for (int k = 0; k < skill; k++) {
+            ritter+=ConsoleColors.BLUE_BACKGROUND+" "+ ConsoleColors.RESET;
+        }
+        for (int l = skill; l < 10; l++) {
+            ritter+=" ";
+        }
+        ritter+="]";
+        return ritter;
+    }
+
+
     public static void dottedLine(){
         String line2 = "";
         StringBuilder line = new StringBuilder();
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 80; i++) {
             line.append("-");
         }
         System.out.println(line);
@@ -18,7 +71,7 @@ public class Ausgabe {
 
     public static String dottedLineReturn(){
         StringBuilder line = new StringBuilder();
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 80; i++) {
             line.append("-");
         }
         return line.toString();

@@ -1,6 +1,10 @@
 package main;
 
+import helper.AusgabeTon;
+import helper.Messages;
 import logik.Spiel;
+
+import java.util.Locale;
 
 
 /**
@@ -9,7 +13,10 @@ import logik.Spiel;
 public class Main {
 
     public static void main(String[] args) {
+        Messages.changeLocation(new Locale("de","DE"));
         Spiel spiel = new Spiel();
+        AusgabeTon.melodieNEU();
+        spiel.initialize();
         spiel.start();
     }
 

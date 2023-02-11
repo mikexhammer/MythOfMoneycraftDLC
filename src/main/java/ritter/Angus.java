@@ -1,6 +1,7 @@
 package ritter;
 
-import helper.Messages;
+import helper.Ausgabe;
+import helper.ConsoleColors;
 import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
@@ -8,6 +9,7 @@ import figuren.Kaempfend;
 
 public class Angus extends Kaempfend{
 
+    private String name = ConsoleColors.YELLOW + "Angus\t" + ConsoleColors.RESET;
     private Waffe waffe;
     private Ruestung ruestung;
 
@@ -59,7 +61,7 @@ public class Angus extends Kaempfend{
 
     @Override
     public String toString() {
-        return "Angus: " + Messages.getString("Main.63") + this.gesundheit + Messages.getString("Main.64") + this.geschick;
+        return Ausgabe.ritterAnzeige(name,this.gesundheit,this.geschick);
     }
 
     public Waffe getWaffe() {

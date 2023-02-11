@@ -28,10 +28,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class Spiel {
 
-    Locale defaultLocale = Locale.GERMAN;
+    Locale englisch = Locale.GERMAN;
+    Locale deutsch = Locale.ENGLISH;
     private List<Kaempfend> kaempfende = new ArrayList<Kaempfend>();
     private Kaempfend maeven;
-    private int gold = 200;
+    private int gold = 500;
     private int lvl = 1;
 
     public List<Kaempfend> getKaempfende() {
@@ -50,35 +51,25 @@ public class Spiel {
     /**
      * Moegliche zu erwerbende Ritter
      */
-    private String[] ritter = {Messages.getString("Main.49"), Messages.getString("Main.50"), Messages.getString("Main.51"), Messages.getString("Main.52")};
+    private String Rohan = ConsoleColors.YELLOW + "Rohan\t" + ConsoleColors.RESET;
+    private String Dierdre = ConsoleColors.YELLOW + "Dierdre\t" + ConsoleColors.RESET;
+    private String Angus = ConsoleColors.YELLOW + "Angus\t" + ConsoleColors.RESET;
+    private String Ivan = ConsoleColors.YELLOW + "Ivan\t" + ConsoleColors.RESET;
+    private String[] ritter;
+    //private String[] ritter = {Messages.getString("Main.49"), Messages.getString("Main.50"), Messages.getString("Main.51"), Messages.getString("Main.52")};
     /**
      * Moegliche zu erwerbende Ruestung
      */
-    private Ruestung[] ruestungen = {
-            new Ruestung(Messages.getString("Main.0"), 4, 20),
-            new Ruestung(Messages.getString("Main.1"), 6, 50),
-            new Ruestung(Messages.getString("Main.2"), 7, 70),
-            new Ruestung(Messages.getString("Main.3"), 10, 100)};
+    private Ruestung[] ruestungen;
 
     /**
      * Moegliche zu erwerbende Waffen
      */
-    private Waffe[] waffen = {
-            new Waffe(Messages.getString("Main.4"), 4, 30),
-            new Waffe(Messages.getString("Main.5"), 7, 70),
-            new Waffe(Messages.getString("Main.6"), 8, 90),
-            new Waffe(Messages.getString("Main.7"), 10, 120)
-    };
+    private Waffe[] waffen;
     /**
      * Moegliche zu erwerbende Traenke
      */
-    private Trank[] trank = {
-            new Trank(Messages.getString("Main.31"), 10, 50),
-            new Trank(Messages.getString("Main.32"), 20, 70),
-            new Trank(Messages.getString("Main.33"), 50, 100),
-            new Trank(Messages.getString("Main.34"), 90, 150),
-    };
-
+    private Trank[] trank;
     /**
      * Sprachen Englisch und Deutsch
      */
@@ -86,6 +77,28 @@ public class Spiel {
             Messages.getString("Main.57"),
             Messages.getString("Main.58"),
     };
+
+    public void initialize() {
+        trank = new Trank[] {
+                new Trank(Messages.getString("Main.31"), 10, 50),
+                new Trank(Messages.getString("Main.32"), 20, 70),
+                new Trank(Messages.getString("Main.33"), 50, 100),
+                new Trank(Messages.getString("Main.34"), 90, 150),
+        };
+        waffen = new Waffe[]{
+                new Waffe(Messages.getString("Main.4"), 4, 30),
+                new Waffe(Messages.getString("Main.5"), 7, 70),
+                new Waffe(Messages.getString("Main.6"), 8, 90),
+                new Waffe(Messages.getString("Main.7"), 10, 120)
+        };
+        ruestungen = new Ruestung[]{
+                new Ruestung(Messages.getString("Main.0"), 4, 20),
+                new Ruestung(Messages.getString("Main.1"), 6, 50),
+                new Ruestung(Messages.getString("Main.2"), 7, 70),
+                new Ruestung(Messages.getString("Main.3"), 10, 100)};
+
+        ritter = new String[]{Ausgabe.ritterAnzeige(Rohan, 60, 6, 120), Ausgabe.ritterAnzeige(Dierdre, 30, 8, 130), Ausgabe.ritterAnzeige(Angus, 90, 6, 140), Ausgabe.ritterAnzeige(Ivan, 80, 7, 150)};
+    }
 
 
     /**
@@ -101,7 +114,6 @@ public class Spiel {
      */
     public void start() {
         ConsoleClear.clear();
-        AusgabeTon.melodieNEU();
         Ausgabe.aktuelleSprache();
         Ausgabe.startMenu();
 
@@ -120,18 +132,20 @@ public class Spiel {
                 }
 
                 if (auswahl == 0) {
-                    Ausgabe.setzeDeutsch();
-                    Ausgabe.aktuelleSprache();
+                    //Ausgabe.setzeDeutsch();
+                    //Ausgabe.aktuelleSprache();
                     Messages.changeLocation(new Locale("de", "DE"));
-                    Ausgabe.neueSprache();
+                    initialize();
+                    //Ausgabe.neueSprache();
                     start();
                 }
 
                 if (auswahl == 1) {
-                    Ausgabe.setzeEnglisch();
-                    Ausgabe.aktuelleSprache();
+                    //Ausgabe.setzeEnglisch();
+                    //Ausgabe.aktuelleSprache();
                     Messages.changeLocation(new Locale("en", "EN"));
-                    Ausgabe.neueSprache();
+                    initialize();
+                    //Ausgabe.neueSprache();
                     start();
                 }
 
@@ -141,9 +155,7 @@ public class Spiel {
                 Ausgabe.spielHistorie();
                 Ausgabe.zurueck();
                 int auswahl = Eingabe.leseInt();
-                if (auswahl == 1) {
-                    start();
-                }
+                start();
             }
 
             if (eingabe == 3) {
@@ -204,7 +216,7 @@ public class Spiel {
             //Beenden
             if (eingabe == 5) {
                 Ausgabe.spielBeendet();
-                return;
+                start();
             }
 
 
@@ -445,11 +457,13 @@ public class Spiel {
         this.mainMenu();
     }
 
-
+/*
     public static void main(String[] args) {
         Locale.setDefault(new Locale("de", "DE"));
         new Spiel().start();
     }
+
+ */
 
 }
 

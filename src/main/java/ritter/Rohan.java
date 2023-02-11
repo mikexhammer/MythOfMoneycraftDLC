@@ -1,5 +1,6 @@
 package ritter;
 
+import helper.Ausgabe;
 import helper.Messages;
 import ware.Ruestung;
 import ware.Trank;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rohan extends Kaempfend {
-
+    private String name = ConsoleColors.YELLOW + "Rohan\t" + ConsoleColors.RESET;
     private List<Waffe> waffen;
     private Ruestung ruestung;
 
@@ -23,7 +24,7 @@ public class Rohan extends Kaempfend {
 
     @Override
     public String toString() {
-        return "Angus: " + Messages.getString("Main.63") + this.gesundheit + Messages.getString("Main.64") + this.geschick;
+        return Ausgabe.ritterAnzeige(name,this.gesundheit,this.geschick);
     }
 
     @Override

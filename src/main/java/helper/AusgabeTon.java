@@ -7,7 +7,7 @@ import java.io.IOException;
 public class AusgabeTon {
 
     public static void playSound(String soundFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        File f = new File("sound/" + soundFile);
+        File f = new File("src/main/resources/sound/" + soundFile);
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();
         clip.open(audioIn);
@@ -29,7 +29,7 @@ public class AusgabeTon {
     public static void melodieNEU() {
         try {
             // Load the audio file
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sound/melodie.wav"));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/sound/melodie.wav"));
 
             // Get the audio clip
             Clip clip = AudioSystem.getClip();
@@ -44,6 +44,7 @@ public class AusgabeTon {
 
             // Play the audio clip
             clip.start();
+            clip.loop(10);
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();

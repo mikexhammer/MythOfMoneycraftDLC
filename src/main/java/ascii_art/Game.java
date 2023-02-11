@@ -2,6 +2,7 @@ package ascii_art;
 
 import helper.Ausgabe;
 import helper.ConsoleColors;
+import logik.Spiel;
 
 public class Game {
 
@@ -32,43 +33,6 @@ public class Game {
                         "                       *@+          8 8888   `Y8.   8         `Y8o.`  8 8888    8888     ,88'  8 8888        8       8 8888       `8b.  ;8.`8888 \n" +
                         "                        .:          8 8888     `Y8. 8            `Yo  8 8888     `8888888P'    8 8888        8       8 8888        `Y8888P ,88P' \n" +
                 ConsoleColors.RESET
-        );
-    }
-
-    public static void kampf() {
-        System.out.println(
-
-
-                ConsoleColors.BLUE + "                               ...                            "+ConsoleColors.YELLOW+"                                                                          "+ConsoleColors.RESET+ ConsoleColors.RED+"            +%%@%*-=+*%+::*###:        "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                          :::=***.               .=*    .-+.  "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"          -@@%###*==#%%*=-=+%#%*.      "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                       .#@%+=+*+                 +@%%#%%@@+   "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"         *@%%##%#*##%#==+##**#%#@-     "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                       %@***%%@%                 %@++%@@@@.-  "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"        #%%#*%*+=:+#      +@%**#*%-    "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                      *@@@%#%@@@.               :@%   %@@- -  "+ConsoleColors.YELLOW+"   %%%%%@@@@@@@@@@@@@%%%#%%%%%#%@@@@@@@@@@@%#%##%#%%%#%@@@@@@@@@@@@%%%%%% "+ConsoleColors.RESET+ ConsoleColors.RED+"       #%%+***+.  -*=.     .+**#%%%:   "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "              :=+**##%%%%%=*%*=#                #@=   #@= =   "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%@%@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"      *%%+++++*+=:  ..=  :=++=:##%@@=  "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "             .+*##****##%@#=+%@-               .@@    =* -.   "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@*+****#@@@@@@@@*****+#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     +%*+#%*:..:-=: :.- :=-....=#-*@@- "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "            +###*#*+--*#%@####*=-              +@+     ==.    "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@+     .%@@%%%%+     :%%#####%@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     %*%%@+-=++#=: .   ..:+#=+-:@###%#."+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "           :.*%=+#%%%#++%@%#@#++@@*:           %@.      .     "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@%%-     -#%%%%#      :         :+%@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     @#%@*#  ----:      .:---: .%%*#%%."+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "           .=#+*##%#*******+*+#. =%@#.        :@#             "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@%%%#.     *####:         .::.     .#@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     ##%#*#==++#=-       -+#++-=#+%**- "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "          =###**#@%##++%%**#*#.    +@@-       *@-             "+ConsoleColors.YELLOW+"   @@@@@@@%@@@@@@@%%%%#*     .##*+     .    #%%%*  ...=@%%@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     -#%%==%.-:-::.     .:--:- #++%@=  "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "         =@*@%%%%%@%#%@#*###@@#:    :@@-      @@              "+ConsoleColors.YELLOW+"   @@@@@@%%%%%###%##%%%#+     =#*.    .      .:-=+*%@@@@#%%#%%%%%#@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"      %#%%##.      .. .    .  .#@%%%-  "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        .@@*@@*@*@##+#*#@@@@@@@@#-..:+%#    =#@#              "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@%%%%%%%###-     *-     *+:           .=%@%@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"      -#*%#%*      :==--    . *%###=.  "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        +@%+@@%*#*@@-%##@@@@@@##@%@*+*****+%@@@@.             "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@%%%%####.    :     +#%%#*=-:.       .%@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"        -#%#=:    +%###%+    =###.     "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        *@*@@*@+@-%#*#*###*%%+@=@*@ %@@@@#.=#@@-              "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@%%####*         -*===--+%%%%*.     +@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"        .**-- -:    :-.    .::%*:      "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        *#%@@+@+@%+*%=%+#@:%*-::+-*.-=##=   +@+               "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@%%%%###+       .##      +%@@#:     #@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"        *+-  .-:--:     :-::+-%:       "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        :%@@+%=%@%:@=%+%%@:@@*       :@@:   %@.               "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@%%%%%###=-:::--#%%*.             .*@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"        :==. .==-:-=***+-:-+: -*-.     "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        #@@*+%:@@#.@@=#**%+##+       %@*   -@%                "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@%%#%#%#########%%%%%*-:.     .:=*%@@@@@@@@@@@@@@%%@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"        .  . .=@%#***#*=*#%@=. -..     "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "       -@@*:@-+@@% @@@++#+%@@@.    .%@*    #@+                "+ConsoleColors.YELLOW+"   %%%%%@@@@@@@@@@@@@######*****#*%@%%%%@@@%##*#####%#%@@@@@@@@@@@@%%%%%% "+ConsoleColors.RESET+ ConsoleColors.RED+"             ==+*%@+#@+*@%*+*:  .      "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "       =@@.#@:+@@@=-@@%%++#*#@:  .+@@=    :@@:                "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@%%%%%%%#####%@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     ::-:::=*@@@*+++--=++=+%%%*=:::--: "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "        %@ %@+.@@@@+:%@*#@**#*=.+@@+.     #@@                 "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     ===+%@@@@@@@@@@%*#@@@@@@@@@%%*=== "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "         *-+@@-:%%#@@++*%*+#@#%%#*=.      -+=                 "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"     :-==+@@@@@@@@@@%*#@@@@@@@@@@+==-: "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "          . #@@+.+@#*#@@#%@%+++#@@@@@%*=:                     "+ConsoleColors.YELLOW+"   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"      :=---%@@@@@@@@##*@@@@@@@@%===-:  "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "             -+*#-.+%@****#%%%#+-:-+*#%%@@%*-                 "+ConsoleColors.YELLOW+"   %####%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "+ConsoleColors.RESET+ ConsoleColors.RED+"       .=-=-*%@@@@@@@=%@@@@@@%*==--:   "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                     :=-:.                .:-+-               "+ConsoleColors.YELLOW+"                                                                          "+ConsoleColors.RESET+ ConsoleColors.RED+"         -----+*#%@@@+%@@%#*=----:     "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                                                              "+ConsoleColors.YELLOW+"                                                                          "+ConsoleColors.RESET+ ConsoleColors.RED+"           .---=-==-==--===--=::       "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                                                              "+ConsoleColors.YELLOW+"                                                                          "+ConsoleColors.RESET+ ConsoleColors.RED+"             .:-=-:::--==-:.          "+ConsoleColors.RESET+"\n"+
-                ConsoleColors.BLUE + "                                                              "+ConsoleColors.YELLOW+"                                                                          "+ConsoleColors.RESET+ ConsoleColors.RED+"                  .....               "+ConsoleColors.RESET+"\n"
-
-
         );
     }
 
@@ -154,7 +118,7 @@ public class Game {
 
 
     public static void mysticKnights(){
-        System.out.println(ConsoleColors.GREEN_BOLD +
+        System.out.println(
                         "                                  - .                                                     \n"+
                         "                                 =.-=                                                     \n"+
                         "                                  :+:                          -+-            +#*         \n"+
@@ -173,8 +137,8 @@ public class Game {
                         "           -=%    :#@    +@-   -@%      *#* %@:             -*#    =#=   %@@=  :@@-       \n"+
                         "           -#+     +@.   @*     #@      .@# %%              +@=    -%*   =@#    +@.       \n"+
                         "           =@:     :@=  .%+     #@-      *@ %*              *@.    .@%   +@-    =%#+.     \n"+
-                        "          =#*.      +*.-#*:     :=*=    .**.-+-            =+=.     -=- -*+               \n"+
-                ConsoleColors.RESET
+                        "          =#*.      +*.-#*:     :=*=    .**.-+-            =+=.     -=- -*+               \n"
+
         );
     }
 
@@ -389,46 +353,31 @@ public class Game {
 
 
 
-    public static void infoSpiel() {
-        System.out.println("              | Willkommen in Mystic Knights – Die Legende von Tir Na Nog\n" +
-                "         /!\\            | Mystic Knights – Die Legende von Tir Na Nog ist eine US-amerikanisch-irische Fantasy-Fernsehserie.\n" +
-                "        / ! \\           | Sie wurde 1998 von Saban Entertainment produziert.\n" +
-                " /\\    )___(            | Die Handlung der Serie basiert teilweise auf der irischen Mythologie.\n" +
-                "(  `.____(_)_________    |\n" +
-                "|           __..--\"\"   | Hier spielst Du ein Textbasiertes Fan-Rougegame!\n" +
-                "(       _.- |            | Deine Aufgabe ist es so viele Level wie möglich zu schaffen.\n" +
-                " \\    ,' | |            | Verlierst Du den Kampf faengt das Spiel von neuem an.\n" +
-                "  \\  /   | |            | Du hast jede Runde die Moeglichkeit neue Ritter anzuwerben oder vorhandene aufzuruesten.\n" +
-                "   \\(    | |            |\n" +
-                "    `     | |            | Die Steuerung erfolgt lediglich ueber eine Zahleneingabe. \n" +
-                "          | |            | Liegt die Zahl ueber dem angegebenen Wert, wartet das Spiel auf eine korrektur.\n");
-    }
-
     public static void infoSpielNeu(){
         System.out.println(
-                        "                  ....:::::------======.                                                                    \n"+
-                        "      -#****######*********************+:::                                                                 \n"+
-                        "      *%#************###################%@#                                                                 \n"+
-                        "      *#%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@-:.                                                                  \n"+
-                        "      *####***#################%%%%%%%%                                                                     \n"+
-                        "      *#****************#*########%%%%#            Willkommen in Mystic Knights – Die Legende von Tir Na Nog\n"+
-                        "      *#**********************######%%#              Mystic Knights – Die Legende von Tir Na Nog ist eine   \n"+
-                        "      *#*************************####%%                  US-amerikanisch-irische Fantasy-Fernsehserie.      \n"+
-                        "      +#*****           **********###%*                Sie wurde 1998 von Saban Entertainment produziert    \n"+
-                        "      *#******+++++++++++++*********###            Die Handlung der Serie basiert teilweise auf der irischen\n"+
-                        "      +##****+                 *****##+                                   Mythologie.                       \n"+
-                        "      +#**+++++===========+++++****+**=                Hier spielst Du ein Textbasiertes Fan-Rougegame!     \n"+
-                        "      +##***++            ***********#+               Deine Aufgabe ist es so viele Level wie möglich zu    \n"+
-                        "      *##*******++++++++++++*********#*                                    schaffen.                        \n"+
-                        "      *#####****              *******##              Verlierst Du den Kampf faengt das Spiel von neuem an.  \n"+
-                        "      *########**********************##                 Du hast jede Runde die Moeglichkeit neue Ritter     \n"+
-                        "      #%%######                 *****#*                    anzuwerben oder vorhandene aufzuruesten.         \n"+
-                        "      *%%%#######********+************+            Die Steuerung erfolgt lediglich ueber eine Zahleneingabe.\n"+
-                        "      #%%%%%################*******##**                                                                     \n"+
-                        "      #%%%%%%%%%%%##################***                                                                     \n"+
-                        "  #%#*##########################****##*                                                                     \n"+
-                        "  =+*****+++++***********************%+                                                                     \n"+
-                        "    .+#%%%##########******++++===---:.                                                                      \n"
+                        ConsoleColors.YELLOW + "                  ....:::::------======.   "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "      -#****######*********************+:::"+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "      *%#************###################%@#"+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "      *#%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@-:. "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "      *####***#################%%%%%%%%    "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "      *#****************#*########%%%%#    "+ConsoleColors.RESET +"        Willkommen in Mystic Knights – Die Legende von Tir Na Nog\n"+
+                        ConsoleColors.YELLOW + "      *#**********************######%%#    "+ConsoleColors.RESET +"          Mystic Knights – Die Legende von Tir Na Nog ist eine   \n"+
+                        ConsoleColors.YELLOW + "      *#*************************####%%    "+ConsoleColors.RESET +"              US-amerikanisch-irische Fantasy-Fernsehserie.      \n"+
+                        ConsoleColors.YELLOW + "      +#*****           **********###%*    "+ConsoleColors.RESET +"            Sie wurde 1998 von Saban Entertainment produziert    \n"+
+                        ConsoleColors.YELLOW + "      *#******+++++++++++++*********###    "+ConsoleColors.RESET +"        Die Handlung der Serie basiert teilweise auf der irischen\n"+
+                        ConsoleColors.YELLOW + "      +##****+                 *****##+    "+ConsoleColors.RESET +"                               Mythologie.                       \n"+
+                        ConsoleColors.YELLOW + "      +#**+++++===========+++++****+**=    "+ConsoleColors.RESET +"            Hier spielst Du ein Textbasiertes Fan-Rougegame!     \n"+
+                        ConsoleColors.YELLOW + "      +##***++            ***********#+    "+ConsoleColors.RESET +"           Deine Aufgabe ist es so viele Level wie möglich zu    \n"+
+                        ConsoleColors.YELLOW + "      *##*******++++++++++++*********#*    "+ConsoleColors.RESET +"                                schaffen.                        \n"+
+                        ConsoleColors.YELLOW + "      *#####****              *******##    "+ConsoleColors.RESET +"          Verlierst Du den Kampf faengt das Spiel von neuem an.  \n"+
+                        ConsoleColors.YELLOW + "      *########**********************##    "+ConsoleColors.RESET +"             Du hast jede Runde die Moeglichkeit neue Ritter     \n"+
+                        ConsoleColors.YELLOW + "      #%%######                 *****#*    "+ConsoleColors.RESET +"                anzuwerben oder vorhandene aufzuruesten.         \n"+
+                        ConsoleColors.YELLOW + "      *%%%#######********+************+    "+ConsoleColors.RESET +"        Die Steuerung erfolgt lediglich ueber eine Zahleneingabe.\n"+
+                        ConsoleColors.YELLOW + "      #%%%%%################*******##**    "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "      #%%%%%%%%%%%##################***    "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "  #%#*##########################****##*    "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "  =+*****+++++***********************%+    "+ConsoleColors.RESET +"                                                                 \n"+
+                        ConsoleColors.YELLOW + "    .+#%%%##########******++++===---:.     "+ConsoleColors.RESET +"                                                                 \n"
         );
     }
 
