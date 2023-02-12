@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         Spiel spiel = new Spiel();
-        //AusgabeTon.melodieNEU();
+        AusgabeTon.background(30);
         spiel.initialize();
         spiel.start();
     }

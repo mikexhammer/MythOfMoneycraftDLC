@@ -4,6 +4,9 @@ import helper.Ausgabe;
 import helper.ConsoleColors;
 import logik.Spiel;
 
+/**
+ * Klasse für die Ausgabe von ASCII-Grafiken
+ */
 public class Game {
 
 
@@ -36,7 +39,7 @@ public class Game {
         );
     }
 
-    public static void kampfNeu(){
+    public static void kampfStart(){
         System.out.println(
 
 
@@ -74,7 +77,7 @@ public class Game {
         );
     }
 
-    public static void maeven(){
+    public static void maeve(){
         System.out.println(
                         "              .-*###*+..-=-:.             \n"+
                         "            -+*##++=+%##*==+##-           \n"+
@@ -353,7 +356,7 @@ public class Game {
 
 
 
-    public static void infoSpielNeu(){
+    public static void infoSpielDeutsch(){
         System.out.println(
                         ConsoleColors.YELLOW + "                  ....:::::------======.   "+ConsoleColors.RESET +"                                                                 \n"+
                         ConsoleColors.YELLOW + "      -#****######*********************+:::"+ConsoleColors.RESET +"                                                                 \n"+
@@ -378,6 +381,34 @@ public class Game {
                         ConsoleColors.YELLOW + "  #%#*##########################****##*    "+ConsoleColors.RESET +"                                                                 \n"+
                         ConsoleColors.YELLOW + "  =+*****+++++***********************%+    "+ConsoleColors.RESET +"                                                                 \n"+
                         ConsoleColors.YELLOW + "    .+#%%%##########******++++===---:.     "+ConsoleColors.RESET +"                                                                 \n"
+        );
+    }
+
+    public static void infoSpielEnglisch() {
+        System.out.println(
+                        ConsoleColors.YELLOW + "                  ....:::::------======.   "+ConsoleColors.RESET +"                                                                \n"+
+                        ConsoleColors.YELLOW + "      -#****######*********************+:::"+ConsoleColors.RESET +"                                                                \n"+
+                        ConsoleColors.YELLOW + "      *%#************###################%@#"+ConsoleColors.RESET +"                                                                \n"+
+                        ConsoleColors.YELLOW + "      *#%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@-:. "+ConsoleColors.RESET +"                                                                \n"+
+                        ConsoleColors.YELLOW + "      *####***#################%%%%%%%%    "+ConsoleColors.RESET +"                                                                \n"+
+                        ConsoleColors.YELLOW + "      *#****************#*########%%%%#    "+ConsoleColors.RESET +"         Welcome to Mystic Knights - The Legend of Tir Na Nog   \n"+
+                        ConsoleColors.YELLOW + "      *#**********************######%%#    "+ConsoleColors.RESET +"            Mystic Knights - The Legend of Tir Na Nog is an     \n"+
+                        ConsoleColors.YELLOW + "      *#*************************####%%    "+ConsoleColors.RESET +"               American-Irish fantasy television series.        \n"+
+                        ConsoleColors.YELLOW + "      +#*****           **********###%*    "+ConsoleColors.RESET +"            It was produced in 1998 by Saban Entertainment      \n"+
+                        ConsoleColors.YELLOW + "      *#******+++++++++++++*********###    "+ConsoleColors.RESET +"            The plot of the series is partly based on Irish     \n"+
+                        ConsoleColors.YELLOW + "      +##****+                 *****##+    "+ConsoleColors.RESET +"                              mythology.                        \n"+
+                        ConsoleColors.YELLOW + "      +#**+++++===========+++++****+**=    "+ConsoleColors.RESET +"              Here you play a text based fan rouge game!        \n"+
+                        ConsoleColors.YELLOW + "      +##***++            ***********#+    "+ConsoleColors.RESET +"         Your task is to complete as many levels as possible.   \n"+
+                        ConsoleColors.YELLOW + "      *##*******++++++++++++*********#*    "+ConsoleColors.RESET +"             If you lose the fight, the game starts again.      \n"+
+                        ConsoleColors.YELLOW + "      *#####****              *******##    "+ConsoleColors.RESET +"          You have every round the possibility to recruit new   \n"+
+                        ConsoleColors.YELLOW + "      *########**********************##    "+ConsoleColors.RESET +"                 knights or to upgrade existing ones.           \n"+
+                        ConsoleColors.YELLOW + "      #%%######                 *****#*    "+ConsoleColors.RESET +"          The game is controlled only by entering a number.    \n"+
+                        ConsoleColors.YELLOW + "      *%%%#######********+************+    "+ConsoleColors.RESET +"       If the number is above the given value, the game waits  \n"+
+                        ConsoleColors.YELLOW + "      #%%%%%################*******##**    "+ConsoleColors.RESET +"                          for a correction.                    \n"+
+                        ConsoleColors.YELLOW + "      #%%%%%%%%%%%##################***    "+ConsoleColors.RESET +"                                                               \n"+
+                        ConsoleColors.YELLOW + "  #%#*##########################****##*    "+ConsoleColors.RESET +"                                                               \n"+
+                        ConsoleColors.YELLOW + "  =+*****+++++***********************%+    "+ConsoleColors.RESET +"                                                               \n"+
+                        ConsoleColors.YELLOW + "    .+#%%%##########******++++===---:.     "+ConsoleColors.RESET +"                                                               \n"
         );
     }
 

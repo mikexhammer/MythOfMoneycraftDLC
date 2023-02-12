@@ -56,7 +56,6 @@ public class Spiel {
     private String Angus = ConsoleColors.YELLOW + "Angus\t" + ConsoleColors.RESET;
     private String Ivan = ConsoleColors.YELLOW + "Ivan\t" + ConsoleColors.RESET;
     private String[] ritter;
-    //private String[] ritter = {Messages.getString("Main.49"), Messages.getString("Main.50"), Messages.getString("Main.51"), Messages.getString("Main.52")};
     /**
      * Moegliche zu erwerbende Ruestung
      */
@@ -75,7 +74,18 @@ public class Spiel {
      */
     private String[] sprache;
 
+    /**
+     * intialisiert die Variablen
+     * - Ruestung[] ruestung
+     * - String[] ritter
+     * - Waffe[] waffen
+     * - Trank[] trank
+     * - String[] sprache
+     * die Methode wird in der main()-Methode aufgerufen
+     * und jedes mal, wenn die Sprache geändert wird
+     */
     public void initialize() {
+
         sprache = new String[]{
         Messages.getString("Main.57"),
         Messages.getString("Main.58"),
@@ -157,7 +167,11 @@ public class Spiel {
             }
 
             if (eingabe == 2) {
-                Ausgabe.spielHistorie();
+                if(Locale.getDefault().getLanguage() == "de") {
+                    Ausgabe.storyDeutsch();
+                } else {
+                    Ausgabe.storyEnglisch();
+                }
                 Ausgabe.zurueck();
                 int auswahl = Eingabe.leseInt();
                 start();
@@ -430,13 +444,14 @@ public class Spiel {
      */
     private void kaempfen(){
         ConsoleClear.clear();
-        Game.kampfNeu();
+        Game.kampfStart();
         while (!this.kaempfende.isEmpty()) {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
                 k.abwehren(maeven.kaempfen());
                 System.out.println(Messages.getString("Main.28") + k.toString());
-                System.out.println(Messages.getString("Main.29") + maeven.getGesundheit() + "\n");
+                Ausgabe.dottedLine();
+                System.out.println(Messages.getString("Main.29") + maeven.toString() + "\n");
 
                 if (maeven.getGesundheit() <= 0) {
                     //Level geschafft
@@ -469,14 +484,6 @@ public class Spiel {
         this.lvl = 1;
         this.mainMenu();
     }
-
-/*
-    public static void main(String[] args) {
-        Locale.setDefault(new Locale("de", "DE"));
-        new Spiel().start();
-    }
-
- */
 
 }
 

@@ -1,5 +1,6 @@
 package figuren;
 
+import helper.Ausgabe;
 import helper.ConsoleColors;
 
 import ware.Ruestung;
@@ -69,5 +70,10 @@ public class Maeve extends Kaempfend{
     @Override
     public void nimmTrank(Trank t) {
         System.out.println("Maeve trinkt keine Traenke");
+    }
+
+    @Override
+    public String toString() {
+        return Ausgabe.maveAnzeige(this);
     }
 }

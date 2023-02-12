@@ -4,45 +4,29 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Nicht dokumentierte Hilfsklasse für die Tonausgabe im Spiel
+ */
 public class AusgabeTon {
 
     public static void playSound(String soundFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        File f = new File("src/main/resources/sound/" + soundFile);
+        File f = new File("sound/" + soundFile);
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();
         clip.open(audioIn);
         clip.start();
     }
 
-    public static void melodie() {
+    public static void background(float reduce) {
         try {
-        playSound("melodie.wav");
-        } catch (UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void melodieNEU() {
-        try {
-            // Load the audio file
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/sound/melodie.wav"));
-
-            // Get the audio clip
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sound/melodie.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 
-            // Get the volume control for the audio clip
             FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-
-            // Reduce the volume by 6 dB (half of the original volume)
             float volume = volumeControl.getValue();
-            volumeControl.setValue(volume - 30.0f);
+            volumeControl.setValue(volume - reduce);
 
-            // Play the audio clip
             clip.start();
             clip.loop(10);
 

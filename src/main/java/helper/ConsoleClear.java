@@ -3,6 +3,9 @@ package helper;
 import java.awt.*;
 import java.io.Console;
 
+/**
+ * Nicht dokumentierte Hilfsklasse für alles was die Steuerung der Konsole betrifft
+ */
 public class ConsoleClear {
 
     public static void clear() {
@@ -11,7 +14,6 @@ public class ConsoleClear {
         System.out.flush();
     }
 
-    //die nuttenkacke funktioniert noch nicht
 /*
     public static void main(String[] args) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -28,5 +30,4 @@ public class ConsoleClear {
     }
 
  */
-
 }

@@ -1,5 +1,8 @@
 package helper;
 
+/**
+ * Nicht dokumentierte Hilfsklasse um Farben in der Konsole darzustellen
+ */
 public class ConsoleColors {
 
     // Reset

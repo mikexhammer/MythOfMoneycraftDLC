@@ -2,13 +2,20 @@ package helper;
 
 import ascii_art.Game;
 import figuren.Kaempfend;
-import ritter.Angus;
+import figuren.Maeve;
 import ware.Ruestung;
 import ware.Waffe;
 
 import java.util.List;
 import java.util.Locale;
 
+
+/**
+ * Hilfsklasse für Klasse Spiel() in package logik
+ * übernimmt die Ausgabe für die o.g. Klasse
+ * Ziel: die Klasse Spiel() überischtlicher und
+ * modularer zu gestalten
+ */
 public class Ausgabe {
 
     public static String ritterAnzeige(String ritter, int life, int skill, int coins){
@@ -139,6 +146,36 @@ public class Ausgabe {
         return ritter;
     }
 
+    public static String maveAnzeige(Maeve m) {
+        int life = m.getGesundheit()/10;
+        String maeve = "";
+        maeve+= Messages.getString("Main.63") + "\t[";
+        //Lebensanzeige
+        if (life >0 ){
+            for (int i = 0; i < life; i++) {
+                maeve += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+            for (int j = life; j < 10; j++) {
+                maeve += " ";
+            }
+        //Wenn tot
+        } else {
+            for (int i = 0; i < 10; i++) {
+                maeve += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
+            }
+        }
+        maeve+="]" + "\t" + Messages.getString("Main.64") + "[";
+        //Skillanzeige
+        for (int e = 0; e < m.getGeschick(); e++) {
+            maeve+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
+        }
+        for (int l = m.getGeschick(); l < 10; l++) {
+            maeve+=" ";
+        }
+        maeve+="]";
+        return maeve;
+    }
+
 
     public static void dottedLine(){
         String line2 = "";
@@ -222,8 +259,12 @@ public class Ausgabe {
                 paddingText(9) + Messages.getString("Main.56"));
     }
 
-    public static void spielHistorie(){
-        Game.infoSpielNeu();
+    public static void storyDeutsch(){
+        Game.infoSpielDeutsch();
+    }
+
+    public static void storyEnglisch(){
+        Game.infoSpielEnglisch();
     }
 
 
