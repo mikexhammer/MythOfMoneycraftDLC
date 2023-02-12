@@ -123,8 +123,7 @@ public class Ausgabe {
                 }
                 } else {
                     for (int i = w.get(0).getName().length(); i < 12; i++) {
-                        ritter += " ";
-                    }
+                        ritter+= " ";}
                 }
             ritter+="]";
         }
