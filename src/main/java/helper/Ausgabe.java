@@ -45,8 +45,8 @@ public class Ausgabe {
     }
 
     public static String ritterAnzeige(Kaempfend k, String ritter, Waffe w, Ruestung r){
-        int life = k.getGesundheit()/10;
-        k.getGeschick();
+        int life = k.getGesundheit();
+        life/=10;
         ritter+= Messages.getString("Main.63") + "[";
         //Lebensanzeige
         if (life >0 ){
@@ -93,8 +93,8 @@ public class Ausgabe {
     }
 
     public static String ritterAnzeige(Kaempfend k, String ritter, List<Waffe> w, Ruestung r){
-        int life = k.getGesundheit()/10;
-        k.getGeschick();
+        int life = k.getGesundheit();
+        life/=10;
         ritter+= Messages.getString("Main.63") + "[";
         //Lebensanzeige
         if (life >0 ){
