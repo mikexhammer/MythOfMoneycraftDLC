@@ -147,7 +147,8 @@ public class Ausgabe {
     }
 
     public static String maveAnzeige(Maeve m) {
-        int life = m.getGesundheit()/10;
+        int life = m.getGesundheit();
+        life/= 10;
         String maeve = "";
         maeve+= Messages.getString("Main.63") + "\t[";
         //Lebensanzeige
