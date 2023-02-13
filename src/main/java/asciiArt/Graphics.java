@@ -1,13 +1,12 @@
-package ascii_art;
+package asciiArt;
 
 import helper.Ausgabe;
 import helper.ConsoleColors;
-import logik.Spiel;
 
 /**
  * Klasse für die Ausgabe von ASCII-Grafiken
  */
-public class Game {
+public class Graphics {
 
 
     public static void titel() {

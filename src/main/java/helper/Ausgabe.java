@@ -1,6 +1,6 @@
 package helper;
 
-import ascii_art.Game;
+import asciiArt.Graphics;
 import figuren.Kaempfend;
 import figuren.Maeve;
 import ware.Ruestung;
@@ -234,7 +234,7 @@ public class Ausgabe {
 
     //Menues
     public static void startMenu() {
-        Game.titel();
+        Graphics.titel();
     }
 
 
@@ -260,11 +260,11 @@ public class Ausgabe {
     }
 
     public static void storyDeutsch(){
-        Game.infoSpielDeutsch();
+        Graphics.infoSpielDeutsch();
     }
 
     public static void storyEnglisch(){
-        Game.infoSpielEnglisch();
+        Graphics.infoSpielEnglisch();
     }
 
 
@@ -315,7 +315,7 @@ public class Ausgabe {
 
     //Waren kaufen
     public static void welcheRuestung(int gold) {
-        Game.schild();
+        Graphics.schild();
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.20"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
@@ -327,7 +327,7 @@ public class Ausgabe {
     }
 
     public static void welcherRitter(int gold){
-        Game.mysticKnights();
+        Graphics.mysticKnights();
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.21"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
@@ -336,7 +336,7 @@ public class Ausgabe {
 
 
     public static void welcheWaffe(int gold){
-        Game.waffen();
+        Graphics.waffen();
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.22"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
@@ -344,7 +344,7 @@ public class Ausgabe {
     }
 
     public static void welcherTrank(int gold) {
-        Game.elixier();
+        Graphics.elixier();
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.36"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));

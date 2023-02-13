@@ -1,6 +1,6 @@
 package logik;
 
-import ascii_art.Game;
+import asciiArt.Graphics;
 import helper.*;
 import figuren.Kaempfend;
 import figuren.Maeve;
@@ -444,7 +444,7 @@ public class Spiel {
      */
     private void kaempfen(){
         ConsoleClear.clear();
-        Game.kampfStart();
+        Graphics.kampfStart();
         while (!this.kaempfende.isEmpty()) {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
@@ -464,7 +464,7 @@ public class Spiel {
 
                 if (k.getGesundheit() <= 0) {
                     AusgabeTon.gefallen();
-                    Game.tot();
+                    Graphics.tot();
                     System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
                     kaempfende.remove(k);
                     break;
