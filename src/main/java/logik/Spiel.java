@@ -143,7 +143,7 @@ public class Spiel {
                 Ausgabe.auswahlSprache();
                 int auswahl = this.auswahl(this.sprache);
                 if (auswahl == this.sprache.length) {
-                    start();
+
                 }
 
                 if (auswahl == 0) {
@@ -152,7 +152,7 @@ public class Spiel {
                     Messages.changeLocation(new Locale("de", "DE"));
                     initialize();
                     //Ausgabe.neueSprache();
-                    start();
+
                 }
 
                 if (auswahl == 1) {
@@ -161,7 +161,7 @@ public class Spiel {
                     Messages.changeLocation(new Locale("en", "EN"));
                     initialize();
                     //Ausgabe.neueSprache();
-                    start();
+
                 }
 
             }
@@ -174,7 +174,9 @@ public class Spiel {
                 }
                 Ausgabe.zurueck();
                 int auswahl = Eingabe.leseInt();
-                start();
+                if (auswahl == 1) {
+
+                }
             }
 
             if (eingabe == 3) {
@@ -201,7 +203,7 @@ public class Spiel {
             //Aktuelles Level
             Ausgabe.dottedLine(150);
             Ausgabe.aktuellesLvl(this.lvl);
-            //Falls vorhanden, uebersicht der aktuellen Ritter
+
             if (!kaempfende.isEmpty()) {
                 Ausgabe.asterikLine(9);
                 Ausgabe.aktuelleRitter();
@@ -243,14 +245,10 @@ public class Spiel {
             //Beenden
             if (eingabe == 5) {
                 Ausgabe.spielBeendet();
-                start();
-            }
-
-
-            if (this.gold < 0) {
-                Ausgabe.betrugerHingerichtet();
                 return;
             }
+
+
         }
 
         if (this.kaempfende.isEmpty()) {
@@ -460,6 +458,8 @@ public class Spiel {
                     this.gold += 500;
                     this.lvl++;
                     this.mainMenu();
+                    return;
+
                 }
 
                 if (k.getGesundheit() <= 0) {
@@ -483,6 +483,7 @@ public class Spiel {
         this.gold = 600;
         this.lvl = 1;
         this.mainMenu();
+        return;
     }
 
 }
