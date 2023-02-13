@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AusgabeTon {
 
     public static void playSound(String soundFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        File f = new File("sound/" + soundFile);
+        File f = new File("src/main/resources/sound/" + soundFile);
         AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
         Clip clip = AudioSystem.getClip();
         clip.open(audioIn);
