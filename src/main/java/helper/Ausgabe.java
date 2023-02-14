@@ -75,7 +75,6 @@ public class Ausgabe {
         for (int l = k.getGeschick(); l < 10; l++) {
             ritter+=" ";
         }
-        ritter+= k.getGesundheit();
         ritter+="]";
 
         if(w != null){
