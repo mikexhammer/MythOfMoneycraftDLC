@@ -22,9 +22,8 @@ public class Angus extends Kaempfend{
     @Override
     public int kaempfen() {
 
-        //Hier Rechteck
         int schadenswert = 0;
-        if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
+        if (this.waffe != null) {
             schadenswert += waffe.zuhauen(geschick);
             System.out.println(name + Messages.getString("Main.69"));
         } else {
