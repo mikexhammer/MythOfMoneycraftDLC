@@ -282,17 +282,6 @@ public class Ausgabe {
         System.out.println(Messages.getString("Main.59"));
     }
 
-    public static void setzeDeutsch() {
-        System.out.println("Setze auf Deutsch");
-    }
-
-    public static void setzeEnglisch() {
-        System.out.println("Setze auf Englisch");
-    }
-
-    public static void neueSprache() {
-        System.out.println(Messages.getString("Main.61") + Locale.getDefault());
-    }
 
 
     //Im Kampf
@@ -304,18 +293,6 @@ public class Ausgabe {
 
     public static void kampfVerloren() {
         System.out.println(ConsoleColors.RED_UNDERLINED + Messages.getString("Main.47") + ConsoleColors.RESET);
-    }
-
-    public static void gesundheitKaempfer(Kaempfend k){
-        System.out.println(Messages.getString("Main.28") + k.toString());
-    }
-
-    public static void gesundheitMaeven(Kaempfend maeven){
-        System.out.println(Messages.getString("Main.29") + maeven.getGesundheit() + "\n");
-    }
-
-    public static void kaempferTot(Kaempfend k) {
-        System.out.println(ConsoleColors.RED_BOLD + k.toString() + Messages.getString("Main.27") + ConsoleColors.RESET);
     }
 
     //Waren kaufen
@@ -359,7 +336,7 @@ public class Ausgabe {
 
     //Aktionen
     public static void zurueck() {
-        System.out.println("(Taste)" + Messages.getString("Main.38"));
+        System.out.println("()" + Messages.getString("Main.38"));
     }
 
     public static void aktionVerpufft() {

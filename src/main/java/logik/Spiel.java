@@ -147,20 +147,18 @@ public class Spiel {
                 }
 
                 if (auswahl == 0) {
-                    //Ausgabe.setzeDeutsch();
-                    //Ausgabe.aktuelleSprache();
+
                     Messages.changeLocation(new Locale("de", "DE"));
                     initialize();
-                    //Ausgabe.neueSprache();
+
 
                 }
 
                 if (auswahl == 1) {
-                    //Ausgabe.setzeEnglisch();
-                    //Ausgabe.aktuelleSprache();
+
                     Messages.changeLocation(new Locale("en", "EN"));
                     initialize();
-                    //Ausgabe.neueSprache();
+
 
                 }
 
