@@ -1,8 +1,10 @@
 package helper;
 
 import javax.sound.sampled.*;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Nicht dokumentierte Hilfsklasse für die Tonausgabe im Spiel
@@ -10,18 +12,21 @@ import java.io.IOException;
 public class AusgabeTon {
 
     public static void playSound(String soundFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        File f = new File("src/main/resources/sound/" + soundFile);
-        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+        InputStream audioSrc = AusgabeTon.class.getResourceAsStream("/sound/" + soundFile);
+        InputStream bufferedIn = new BufferedInputStream(audioSrc);
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
         Clip clip = AudioSystem.getClip();
-        clip.open(audioIn);
+        clip.open(audioStream);
         clip.start();
     }
 
-    public static void background(float reduce) {
+    public static void backgroundSound(float reduce, String soundFile) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/sound/melodie.wav"));
+            InputStream audioSrc = AusgabeTon.class.getResourceAsStream("/sound/" + soundFile);
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
             Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
+            clip.open(audioStream);
 
             FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             float volume = volumeControl.getValue();

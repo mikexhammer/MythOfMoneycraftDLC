@@ -51,7 +51,7 @@ public class Ausgabe {
         int life = k.getGesundheit();
         life/=10;
         ritter+= Messages.getString("Main.63") + "[";
-        //Lebensanzeige
+
         if (k.getGesundheit() >0 ){
             ritter += ConsoleColors.GREEN_BACKGROUND + " " + k.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < life; i++) {
@@ -67,7 +67,7 @@ public class Ausgabe {
             }
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
-        //Skillanzeige
+
         ritter+=ConsoleColors.PURPLE_BACKGROUND+ " " + k.getGeschick() + ConsoleColors.RESET;
         for (int e = 0; e < k.getGeschick(); e++) {
             ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
@@ -101,7 +101,7 @@ public class Ausgabe {
         int life = k.getGesundheit();
         life/=10;
         ritter+= Messages.getString("Main.63") + "[";
-        //Lebensanzeige
+
         if (k.getGesundheit() >0 ){
             ritter += ConsoleColors.GREEN_BACKGROUND + " " + k.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < life; i++) {
@@ -117,7 +117,7 @@ public class Ausgabe {
             }
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
-        //Skillanzeige
+
         ritter+=ConsoleColors.PURPLE_BACKGROUND+ " " + k.getGeschick() + ConsoleColors.RESET;
         for (int e = 0; e < k.getGeschick(); e++) {
             ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
@@ -158,7 +158,7 @@ public class Ausgabe {
         life/= 10;
         String maeve = "";
         maeve+= Messages.getString("Main.63") + "\t[";
-        //Lebensanzeige
+
         if (m.getGesundheit() > 0 ){
             maeve += ConsoleColors.GREEN_BACKGROUND + " " + m.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < life; i++) {
@@ -174,7 +174,7 @@ public class Ausgabe {
             }
         }
         maeve+="]" + "\t" + Messages.getString("Main.64") + "[";
-        //Skillanzeige
+
         maeve+=ConsoleColors.PURPLE_BACKGROUND+" " + m.getGeschick() + ConsoleColors.RESET;
         for (int e = 0; e < m.getGeschick(); e++) {
             maeve+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;

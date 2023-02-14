@@ -1,10 +1,7 @@
 package main;
 
 import helper.AusgabeTon;
-import helper.Messages;
 import logik.Spiel;
-
-import java.util.Locale;
 
 
 /**
@@ -14,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Spiel spiel = new Spiel();
-        AusgabeTon.background(30);
+        AusgabeTon.backgroundSound(30,"melodie.wav");
         spiel.initialize();
         spiel.start();
     }
