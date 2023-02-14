@@ -35,14 +35,14 @@ public class Rohan extends Kaempfend {
             for (Waffe w : waffen) {
                 schadenswert += w.zuhauen(geschick);
                 if(hand % 2 == 0) {
-                    System.out.println("Rohan schlaegt mit seiner linken Waffe!");
+                    System.out.println(name + Messages.getString("Main.71"));
                 } else {
-                    System.out.println("Rohan schlaegt mit seiner rechten Waffe!");
+                    System.out.println(name + Messages.getString("Main.72"));
                 }
                 hand++;
             }
         } else {
-            System.out.println(ConsoleColors.YELLOW + "Rohan haut mit Faeusten!" + ConsoleColors.RESET);
+            System.out.println(name + Messages.getString("Main.70"));
             schadenswert = geschick;
         }
         return schadenswert;
@@ -71,9 +71,9 @@ public class Rohan extends Kaempfend {
     public void nimmTrank(Trank t) {
         this.setGesundheit(this.gesundheit + t.getAufbau());
         if (this.gesundheit == 100) {
-            System.out.println("Rohan ist vollstaendig geheilt!");
+            System.out.println(name + Messages.getString("Main.73"));
         } else {
-            System.out.println("Rohan auf " + this.gesundheit + " geheilt.");
+            System.out.println(name + Messages.getString("Main.75") + this.gesundheit + Messages.getString("Main.76"));
         }
     }
     public List<Waffe> getWaffen() {

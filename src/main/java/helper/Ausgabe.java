@@ -16,17 +16,18 @@ import java.util.Locale;
  * Ziel: die Klasse Spiel() überischtlicher und
  * modularer zu gestalten
  */
-//ewrfew
 public class Ausgabe {
 
     public static String ritterAnzeige(String ritter, int life, int skill, int coins){
-        life = life/10;
+        int life_temp = life;
+        life_temp /=10;
         ritter+= Messages.getString("Main.63") + "[";
         if (life >0 ){
-            for (int i = 0; i < life; i++) {
+            ritter += ConsoleColors.GREEN_BACKGROUND + " " + life + ConsoleColors.RESET;
+            for (int i = 0; i < life_temp; i++) {
                 ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
-            for (int j = life; j < 10; j++) {
+            for (int j = life_temp; j < 10; j++) {
                 ritter += " ";
             }
         } else {
@@ -35,8 +36,9 @@ public class Ausgabe {
             }
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
+        ritter += ConsoleColors.PURPLE_BACKGROUND + " " + skill + ConsoleColors.RESET;
         for (int k = 0; k < skill; k++) {
-            ritter+=ConsoleColors.BLUE_BACKGROUND+" "+ ConsoleColors.RESET;
+            ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
         }
         for (int l = skill; l < 10; l++) {
             ritter+=" ";
@@ -51,27 +53,29 @@ public class Ausgabe {
         ritter+= Messages.getString("Main.63") + "[";
         //Lebensanzeige
         if (k.getGesundheit() >0 ){
+            ritter += ConsoleColors.GREEN_BACKGROUND + " " + k.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < life; i++) {
                 ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
             for (int j = life; j < 10; j++) {
                 ritter += " ";
             }
-        //Wenn tot
         } else {
+            ritter += ConsoleColors.RED_BACKGROUND + " " + k.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < 10; i++) {
                 ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
-            ritter+= k.getGesundheit();
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
         //Skillanzeige
+        ritter+=ConsoleColors.PURPLE_BACKGROUND+ " " + k.getGeschick() + ConsoleColors.RESET;
         for (int e = 0; e < k.getGeschick(); e++) {
             ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
         }
         for (int l = k.getGeschick(); l < 10; l++) {
             ritter+=" ";
         }
+        ritter+= k.getGesundheit();
         ritter+="]";
 
         if(w != null){
@@ -100,21 +104,22 @@ public class Ausgabe {
         ritter+= Messages.getString("Main.63") + "[";
         //Lebensanzeige
         if (k.getGesundheit() >0 ){
+            ritter += ConsoleColors.GREEN_BACKGROUND + " " + k.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < life; i++) {
                 ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
             for (int j = life; j < 10; j++) {
                 ritter += " ";
             }
-            //Wenn tot
         } else {
+            ritter += ConsoleColors.RED_BACKGROUND + " " + k.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < 10; i++) {
                 ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
-            ritter+= k.getGesundheit();
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
         //Skillanzeige
+        ritter+=ConsoleColors.PURPLE_BACKGROUND+ " " + k.getGeschick() + ConsoleColors.RESET;
         for (int e = 0; e < k.getGeschick(); e++) {
             ritter+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
         }
@@ -156,21 +161,22 @@ public class Ausgabe {
         maeve+= Messages.getString("Main.63") + "\t[";
         //Lebensanzeige
         if (m.getGesundheit() > 0 ){
+            maeve += ConsoleColors.GREEN_BACKGROUND + " " + m.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < life; i++) {
                 maeve += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
             for (int j = life; j < 10; j++) {
                 maeve += " ";
             }
-        //Wenn tot
         } else {
+            maeve += ConsoleColors.RED_BACKGROUND + " " + m.getGesundheit() + ConsoleColors.RESET;
             for (int i = 0; i < 10; i++) {
                 maeve += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
-            maeve+= m.getGesundheit();
         }
         maeve+="]" + "\t" + Messages.getString("Main.64") + "[";
         //Skillanzeige
+        maeve+=ConsoleColors.PURPLE_BACKGROUND+" " + m.getGeschick() + ConsoleColors.RESET;
         for (int e = 0; e < m.getGeschick(); e++) {
             maeve+=ConsoleColors.PURPLE_BACKGROUND+" "+ ConsoleColors.RESET;
         }
@@ -288,7 +294,7 @@ public class Ausgabe {
     public static void maevenBesiegt(int lvl) {
         System.out.println(ConsoleColors.GREEN_BOLD + Messages.getString("Main.26") + ConsoleColors.RESET);
         System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + Messages.getString("Main.25") + ConsoleColors.RESET);
-        System.out.println(Messages.getString("Main.45") + lvl + Messages.getString("Main.46"));
+        System.out.println(Messages.getString("Main.45") + " " + lvl + Messages.getString("Main.46"));
     }
 
     public static void kampfVerloren() {
@@ -296,8 +302,11 @@ public class Ausgabe {
     }
 
     //Waren kaufen
-    public static void welcheRuestung(int gold) {
+    public static void welcheRuestung(int gold, boolean no_gold) {
         Graphics.schild();
+        if(no_gold){
+            zuWenigGold();
+        }
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.20"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
@@ -317,16 +326,22 @@ public class Ausgabe {
     }
 
 
-    public static void welcheWaffe(int gold){
+    public static void welcheWaffe(int gold, boolean no_gold){
         Graphics.waffen();
+        if(no_gold){
+            zuWenigGold();
+        }
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.22"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));
         Ausgabe.dottedLine();
     }
 
-    public static void welcherTrank(int gold) {
+    public static void welcherTrank(int gold, boolean no_gold) {
         Graphics.elixier();
+        if(no_gold){
+            zuWenigGold();
+        }
         Ausgabe.dottedLine();
         System.out.println(Messages.getString("Main.36"));
         System.out.println(Messages.getString("Main.10") + ConsoleColors.YELLOW_UNDERLINED + gold + ConsoleColors.RESET + Messages.getString("Main.11"));

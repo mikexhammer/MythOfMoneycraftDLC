@@ -3,6 +3,7 @@ package figuren;
 import helper.Ausgabe;
 import helper.ConsoleColors;
 
+import helper.Messages;
 import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
@@ -13,6 +14,7 @@ import ware.Waffe;
  * Geschick hat keine Grenze
  */
 public class Maeve extends Kaempfend{
+        private String name = ConsoleColors.RED + "Maeve\t" + ConsoleColors.RESET;
 
     public Maeve() {
         this.gesundheit = 100;
@@ -31,7 +33,7 @@ public class Maeve extends Kaempfend{
      * @return Schadenswert
      */
     public int kaempfen() {
-        System.out.println(ConsoleColors.WHITE_BOLD + "Maeve schlaegt zu!" + ConsoleColors.RESET);
+        System.out.println(name + Messages.getString("Main.74"));
         return geschick * this.getRandomNumber(1, 5);
     }
 

@@ -2,6 +2,7 @@ package ritter;
 
 import helper.Ausgabe;
 import helper.ConsoleColors;
+import helper.Messages;
 import ware.Ruestung;
 import ware.Trank;
 import ware.Waffe;
@@ -25,9 +26,9 @@ public class Angus extends Kaempfend{
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Angus schlaegt mit seiner Waffe!");
+            System.out.println(name + Messages.getString("Main.69"));
         } else {
-            System.out.println("Angus schlaegt mit Faeusten!");
+            System.out.println(name + Messages.getString("Main.70"));
             schadenswert = geschick;
         }
 
@@ -53,9 +54,9 @@ public class Angus extends Kaempfend{
     public void nimmTrank(Trank t) {
         this.setGesundheit(this.gesundheit + t.getAufbau());
         if (this.gesundheit == 100) {
-            System.out.println("Angus ist vollstaendig geheilt!");
+            System.out.println(name + Messages.getString("Main.73"));
         } else {
-            System.out.println("Angus auf " + this.gesundheit + " geheilt.");
+            System.out.println(name + Messages.getString("Main.75") + this.gesundheit + Messages.getString("Main.76"));
         }
     }
 

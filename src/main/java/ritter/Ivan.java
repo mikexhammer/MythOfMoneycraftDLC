@@ -24,9 +24,9 @@ public class Ivan extends Kaempfend{
         int schadenswert = 0;
         if (this.waffe != null) { // Nur, falls Kollege schon waffen hat!
             schadenswert += waffe.zuhauen(geschick);
-            System.out.println("Ivan schlaegt mit seiner Waffe!");
+            System.out.println(name + Messages.getString("Main.69"));
         } else {
-            System.out.println("Ivan schlaegt mit Faeusten!");
+            System.out.println(name + Messages.getString("Main.70"));
             schadenswert = geschick;
         }
         return schadenswert;
@@ -50,9 +50,9 @@ public class Ivan extends Kaempfend{
     public void nimmTrank(Trank t) {
         this.setGesundheit(this.gesundheit + t.getAufbau());
         if (this.gesundheit == 100) {
-            System.out.println("Ivan ist vollstaendig geheilt!");
+            System.out.println(name + Messages.getString("Main.73"));
         } else {
-            System.out.println("Ivan auf " + this.gesundheit + " geheilt.");
+            System.out.println(name + Messages.getString("Main.75") + this.gesundheit + Messages.getString("Main.76"));
         }
     }
 

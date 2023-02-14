@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
  * Gold, welches zum Start den Wert 600 bestitzt,
  * die bisher erreichten Level,
  * sowie alle im Spiel moeglichen Ausruestungen und Sprachpakete der Anwendung.
- *
  */
 public class Spiel {
 
@@ -143,23 +142,16 @@ public class Spiel {
                 Ausgabe.auswahlSprache();
                 int auswahl = this.auswahl(this.sprache);
                 if (auswahl == this.sprache.length) {
-
                 }
 
                 if (auswahl == 0) {
-
                     Messages.changeLocation(new Locale("de", "DE"));
                     initialize();
-
-
                 }
 
                 if (auswahl == 1) {
-
                     Messages.changeLocation(new Locale("en", "EN"));
                     initialize();
-
-
                 }
 
             }
@@ -280,6 +272,8 @@ public class Spiel {
         return ergebnis;
     }
 
+
+    private static boolean no_gold = false;
     /**
      * Ermoeglicht dem Spieler den Erwerb einer neuen Ruestung
      * prueft ob genuegend Gold vorhanden ist
@@ -287,17 +281,19 @@ public class Spiel {
      */
     public void neueRuestung() {
         ConsoleClear.clear();
-        Ausgabe.welcheRuestung(this.gold);
+        Ausgabe.welcheRuestung(this.gold, no_gold);
         int eingabe = this.auswahl(this.ruestungen);
         if (eingabe == this.ruestungen.length) {
             ConsoleClear.clear();
+            no_gold = false;
             return;
         } else if (eingabe >= 0 && eingabe <= this.ruestungen.length - 1) {
             Ruestung r = this.ruestungen[eingabe];
             if (r.getPreis() > this.gold) {
-                Ausgabe.zuWenigGold();
+                no_gold = true;
                 neueRuestung();
             } else {
+                no_gold = false;
                 Ausgabe.welcherRitter(this.gold);
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
@@ -320,17 +316,19 @@ public class Spiel {
      */
     public void neueWaffe() {
         ConsoleClear.clear();
-        Ausgabe.welcheWaffe(this.gold);
+        Ausgabe.welcheWaffe(this.gold, no_gold);
         int eingabe = this.auswahl(this.waffen);
         if (eingabe == this.waffen.length) {
             ConsoleClear.clear();
+            no_gold = false;
             return;
         } else if (eingabe >= 0 && eingabe <= this.waffen.length - 1) {
             Waffe w = this.waffen[eingabe];
             if (w.getPreis() > this.gold) {
-                Ausgabe.zuWenigGold();
+                no_gold = true;
                 neueWaffe();
             } else {
+                no_gold = false;
                 Ausgabe.welcherRitter(this.gold);
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
@@ -354,18 +352,20 @@ public class Spiel {
      */
     private void neuerTrank() {
         ConsoleClear.clear();
-        Ausgabe.welcherTrank(this.gold);
+        Ausgabe.welcherTrank(this.gold, no_gold);
         int eingabe = this.auswahl(this.trank);
         if (eingabe == this.trank.length) {
             ConsoleClear.clear();
+            no_gold = false;
             return;
         }
         else if (eingabe >= 0 && eingabe <= this.trank.length - 1) {
             Trank t = this.trank[eingabe];
             if (t.getPreis() > this.gold) {
-                Ausgabe.zuWenigGold();
+                no_gold = true;
                 neuerTrank();
             } else {
+                no_gold = false;
                 Ausgabe.welcherRitter(this.gold);
                 eingabe = this.auswahl(this.kaempfende.toArray());
                 if (eingabe == this.kaempfende.toArray().length) {
@@ -445,8 +445,9 @@ public class Spiel {
             for (Kaempfend k : kaempfende) {
                 maeven.abwehren(k.kaempfen());
                 k.abwehren(maeven.kaempfen());
-                System.out.println(Messages.getString("Main.28") + k.toString());
                 Ausgabe.dottedLine();
+                System.out.println(Messages.getString("Main.28") + k.toString());
+                Ausgabe.dottedLine(1);
                 System.out.println(Messages.getString("Main.29") + maeven.toString() + "\n");
 
                 if (maeven.getGesundheit() <= 0) {
