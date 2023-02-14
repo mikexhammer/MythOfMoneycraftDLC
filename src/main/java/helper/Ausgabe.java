@@ -16,6 +16,7 @@ import java.util.Locale;
  * Ziel: die Klasse Spiel() überischtlicher und
  * modularer zu gestalten
  */
+//ewrfew
 public class Ausgabe {
 
     public static String ritterAnzeige(String ritter, int life, int skill, int coins){
