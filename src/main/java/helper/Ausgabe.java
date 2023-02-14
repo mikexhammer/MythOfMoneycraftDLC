@@ -49,7 +49,7 @@ public class Ausgabe {
         life/=10;
         ritter+= Messages.getString("Main.63") + "[";
         //Lebensanzeige
-        if (life >0 ){
+        if (k.getGesundheit() >0 ){
             for (int i = 0; i < life; i++) {
                 ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
@@ -61,6 +61,7 @@ public class Ausgabe {
             for (int i = 0; i < 10; i++) {
                 ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
+            ritter+= k.getGesundheit();
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
         //Skillanzeige
@@ -97,7 +98,7 @@ public class Ausgabe {
         life/=10;
         ritter+= Messages.getString("Main.63") + "[";
         //Lebensanzeige
-        if (life >0 ){
+        if (k.getGesundheit() >0 ){
             for (int i = 0; i < life; i++) {
                 ritter += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
@@ -109,6 +110,7 @@ public class Ausgabe {
             for (int i = 0; i < 10; i++) {
                 ritter += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
+            ritter+= k.getGesundheit();
         }
         ritter+="]" + "\t" + Messages.getString("Main.64") + "[";
         //Skillanzeige
@@ -152,7 +154,7 @@ public class Ausgabe {
         String maeve = "";
         maeve+= Messages.getString("Main.63") + "\t[";
         //Lebensanzeige
-        if (life >0 ){
+        if (m.getGesundheit() > 0 ){
             for (int i = 0; i < life; i++) {
                 maeve += ConsoleColors.GREEN_BACKGROUND + " " + ConsoleColors.RESET;
             }
@@ -164,6 +166,7 @@ public class Ausgabe {
             for (int i = 0; i < 10; i++) {
                 maeve += ConsoleColors.RED_BACKGROUND + " " + ConsoleColors.RESET;
             }
+            maeve+= m.getGesundheit();
         }
         maeve+="]" + "\t" + Messages.getString("Main.64") + "[";
         //Skillanzeige

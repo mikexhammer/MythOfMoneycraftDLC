@@ -19,7 +19,7 @@ public class AusgabeTon {
 
     public static void background(float reduce) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sound/melodie.wav"));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/sound/melodie.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
 
