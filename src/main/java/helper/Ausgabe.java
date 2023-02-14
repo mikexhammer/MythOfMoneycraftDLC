@@ -313,7 +313,7 @@ public class Ausgabe {
     }
 
     public static void zuWenigGold() {
-        System.out.println(Messages.getString("Main.53"));
+        System.out.println(ConsoleColors.RED_BOLD + Messages.getString("Main.53") + ConsoleColors.RESET);
     }
 
     public static void welcherRitter(int gold){

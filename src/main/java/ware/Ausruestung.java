@@ -1,6 +1,8 @@
 package ware;
 
 
+import helper.Messages;
+
 /**
  * Zu erweiternde Klasse aller Waren
  * haelt spezifischen Namen und Preis
@@ -32,7 +34,7 @@ public class Ausruestung {
 
     @Override
     public String toString() {
-        return name + " (Preis:" + preis + ")";
+        return name + " (" + Messages.getString("Main.77") + " " + preis + ")";
     }
 
 
